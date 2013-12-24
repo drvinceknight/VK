@@ -27,14 +27,27 @@
 
 			<h2><a href="#">Teaching</a></h2>
 			<h3>"That student is taught the best who is told the least." Moore.</h3>
-			<p>Resources for my students and information for colleagues can be found here.
-            </p>
-            <ul>
-                <li>Computing for Mathematics</li>
-                <li>Game Theory</li>
-                <li>OR Methods</li>
-                <li>Advanced Statistical Packages</li>
-            </ul>
+            </br>
+            {% if current_course_list %}
+                <p>Here are courses I am currently teaching:</p>
+                <ul>
+                {% for course in current_course_list %}
+                    <li><a href="{{course.url}}", target="_blank">{{ course.title }}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>I am not currently teaching any courses.</p>
+            {% endif %}
+            {% if upcoming_course_list %}
+                <p>Here are courses I will be teaching shortly:</p>
+                <ul>
+                {% for course in upcoming_course_list %}
+                    <li><a href="{{course.url}}", target="_blank">{{ course.title }}</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <br/>
+            <p>A full list of all my courses can be found <a href="#", target="_blank">here</a>
 			<br />
 
 			<h2><a href="#">Research</a></h2>
@@ -49,7 +62,7 @@
                 <p>Here is my latest video:</p>
                 <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ latest_video_list.0.youtubeid }}" frameborder="0" allowfullscreen></iframe>
 
-                <p>Here are previous {{latest_video_list|length|add:"-1"}} videos:</p>
+                <p>Here are my previous {{latest_video_list|length|add:"-1"}} videos:</p>
                 <ul>
                 {% for video in latest_video_list|slice:"1:" %}
                     <li><a href="{{video.url}}", target="_blank">{{ video.title }}</a></li>

@@ -17,6 +17,7 @@ p  { margin: 5px 0 15px; line-height: 1.6em; }
 	#top li a:hover { background: #808080; color: #fff; }
 #intro { clear: both; padding: 15px 0 1px 20px; border: 2px solid #dedede; font-size: 1.3em; margin: 0 0 30px; }
 #main { float: right; width: 700px; margin: 0 0 15px; }
+#main ul {padding: 20px}
 #right { float: right; width: 280px; }
 #right h3 { border-bottom: 1px solid #ccc; margin: 0 0 10px; }
 #right img { margin: 0 3px 3px 0; border: 2px solid #eee; padding: 2px; }
