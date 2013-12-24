@@ -61,7 +61,7 @@
             {% if latest_video_list %}
                 <p>Here is my latest video:</p>
                 <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ latest_video_list.0.youtubeid }}" frameborder="0" allowfullscreen></iframe>
-
+                <br></br>
                 <p>Here are my previous {{latest_video_list|length|add:"-1"}} videos:</p>
                 <ul>
                 {% for video in latest_video_list|slice:"1:" %}
