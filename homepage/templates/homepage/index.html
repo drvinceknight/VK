@@ -44,7 +44,16 @@
 
 			<h2><a href="#">Outreach</a></h2>
 			<h3>Mathematics is cool. </h3>
-            <p>My latest YouTube video is here...</p>
+            <br><br />
+            {% if latest_video_list %}
+                <ul>
+                {% for video in latest_video_list %}
+                    <li><a href="{{video.url}}", target="_blank">{{ video.title }}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No videos are available.</p>
+            {% endif %}
 			<br />
 
 
@@ -59,10 +68,17 @@
 				<li><a href="https://twitter.com/drvinceknight", target="_blank">Twitter: @drvinceknight</a></li>
 			</ul>
             <br /><br />
+
 			<h3>Latest Commits (this page is pushed here)</h3>
-			<ul>
-				<li>Going to include a list of git commits here...</li>
-			</ul>
+            {% if latest_commits %}
+                <ul>
+                {% for commit in latest_commits %}
+                    <li>{{ commit }}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No commits are available.</p>
+            {% endif %}
 		</div>
 
 		<div id="footer">

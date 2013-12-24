@@ -1,5 +1,14 @@
 from django.shortcuts import render
 from django.shortcuts import render_to_response
+from git import Repo
+
+from vids.models import Video
 
 def index(request):
-    return render_to_response('homepage/index.html')
+    latest_video_list = Video.objects.all().order_by('-pub_date')[:5]
+
+    latest_commits = [c.message for c in Repo("./").iter_commits('Head', max_count=5)]
+    print latest_commits
+
+    context = {'latest_video_list': latest_video_list, 'latest_commits': latest_commits}
+    return render_to_response('homepage/index.html', context)
