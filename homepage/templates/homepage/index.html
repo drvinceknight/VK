@@ -46,8 +46,11 @@
 			<h3>Mathematics is cool. </h3>
             <br><br />
             {% if latest_video_list %}
+                <p>Here is my latest video:</p>
+                <iframe width="560" height="315" src={{ latest_video_list.0.url }} frameborder="0" allowfullscreen></iframe>
+                <p>Here are my last {{latest_video_list|length|add:"-1"}} videos:</p>
                 <ul>
-                {% for video in latest_video_list %}
+                {% for video in latest_video_list|slice:"1:" %}
                     <li><a href="{{video.url}}", target="_blank">{{ video.title }}</a></li>
                 {% endfor %}
                 </ul>
