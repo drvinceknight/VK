@@ -56,12 +56,16 @@
             <p>A list of my latest papers is available here:</p>
                 <ul>
                 {% for paper in latest_paper_list  %}
-                    <li>{{paper.title}} in {{paper.journal}} {% if paper.openaccess %} (Open access) {% endif %}</li>
+                    {% if paper.url %}
+                        <li> <a href="/research/{{ papers.id }}">{{ paper.title }}</a>  in <a href="{{paper.url}}", target="_blank"> {{paper.journal}} {% if paper.openaccess %} (Open access) {% endif %} </a></li>
+                    {% else %}
+                        <li>  {{paper.title}} in {{paper.journal}} {% if paper.openaccess %} (Open access) {% endif %} </li>
+                    {% endif %}
                 {% endfor %}
                 </ul>
             {% endif %}
             <br/>
-            <p>A full list of all my courses can be found <a href="#", target="_blank">here</a>
+            <p>A full list of all my papers can be found <a href="#", target="_blank">here</a>
 			<br />
 			<br />
 

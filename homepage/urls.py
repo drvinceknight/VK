@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 
-from polls import views
+from homepage import views
 
 urlpatterns = patterns('',
-    url(r'^$', 'homepage.views.index'),
+    url(r'^$', views.index),
     )
