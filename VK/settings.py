@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'homepage',
     'vids',
     'teaching',
+    'research',
 )
 
 MIDDLEWARE_CLASSES = (
