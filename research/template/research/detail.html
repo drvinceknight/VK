@@ -1,0 +1,120 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'research/style.css' %}" />
+
+
+<head>
+	<meta name="author" content="www.vincent-knight.com" />
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>Vince Knight</title>
+</head>
+<body>
+	<div id="content">
+		<h1><span class="hr">Vince Knight</h1>
+		<ul id="top">
+			<li><a class="current" href="#">Home</a></li>
+			<li><a href="#">Teaching</a></li>
+			<li><a href="#">Research</a></li>
+			<li><a href="#">Outreach</a></li>
+			<li><a href="#">Cool Stuff</a></li>
+		</ul>
+
+		<div id="intro">
+			<p>I am a lecturer in Operational Research at Cardiff University with research interests in Game theory and Queueing theory applied to healthcare systems.</p>
+		</div>
+
+		<div id="main">
+
+			<h2><a href="#">Teaching</a></h2>
+			<h3>"That student is taught the best who is told the least." Moore.</h3>
+            </br>
+            {% if current_course_list %}
+                <p>Here are courses I am currently teaching:</p>
+                <ul>
+                {% for course in current_course_list %}
+                    <li><a href="{{course.url}}", target="_blank">{{ course.title }}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>I am not currently teaching any courses.</p>
+            {% endif %}
+            {% if upcoming_course_list %}
+                <p>Here are courses I will be teaching shortly:</p>
+                <ul>
+                {% for course in upcoming_course_list %}
+                    <li><a href="{{course.url}}", target="_blank">{{ course.title }}</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <br/>
+            <p>A full list of all my courses can be found <a href="#", target="_blank">here</a>
+			<br />
+
+			<h2><a href="#">Research</a></h2>
+			<h3>"Selfish users make busier systems" </h3>
+            {% if latest_paper_list %}
+            <p>A list of my latest papers is available here:</p>
+                <ul>
+                {% for paper in latest_paper_list  %}
+                    {% if paper.url %}
+                        <li> <a href="/research/{{ paper.id }}">{{ paper.title }}</a>  in <a href="{{paper.url}}", target="_blank"> {{paper.journal}} {% if paper.openaccess %} (Open access) {% endif %} </a></li>
+                    {% else %}
+                        <li>  {{paper.title}} in {{paper.journal}} {% if paper.openaccess %} (Open access) {% endif %} </li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <br/>
+            <p>A full list of all my papers can be found <a href="#", target="_blank">here</a>
+			<br />
+			<br />
+
+			<h2><a href="#">Outreach</a></h2>
+			<h3>Mathematics is cool. </h3>
+            <br><br />
+            {% if latest_video_list %}
+                <p>Here is my latest video:</p>
+                <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ latest_video_list.0.youtubeid }}" frameborder="0" allowfullscreen></iframe>
+                <br></br>
+                <p>Here are my previous {{latest_video_list|length|add:"-1"}} videos:</p>
+                <ul>
+                {% for video in latest_video_list|slice:"1:" %}
+                    <li><a href="{{video.url}}", target="_blank">{{ video.title }}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No videos are available.</p>
+            {% endif %}
+			<br />
+
+
+        </div>
+		<div id="left">
+			<h3>Social Media</h3>
+			<ul>
+				<li><a href="https://plus.google.com/+VincentKnight/posts", target="_blank">G+: +Vincent Knight</a></li>
+				<li><a href="http://www.youtube.com/user/DrVinceKnight/", target="_blank">YouTube: +Vincent Knight</a></li>
+				<li><a href="https://github.com/drvinceknight", target="_blank">Github: drvinceknight</a></li>
+				<li><a href="http://drvinceknight.blogspot.co.uk/", target="_blank">My blog: Un peu de math</a></li>
+				<li><a href="https://twitter.com/drvinceknight", target="_blank">Twitter: @drvinceknight</a></li>
+			</ul>
+            <br /><br />
+
+			<h3>Latest Commits (this page is pushed here)</h3>
+            {% if latest_commits %}
+                <ul>
+                {% for commit in latest_commits %}
+                    <li>{{ commit }}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No commits are available.</p>
+            {% endif %}
+		</div>
+
+		<div id="footer">
+			<p>Design for this website by Vince Knight based on a design by: Luka Cvrk, <a title="Awsome Web Templates" href="http://www.solucija.com/">Solucija</a></p>
+		</div>
+	</div>
+</body>
+</html>
