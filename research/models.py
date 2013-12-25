@@ -11,6 +11,7 @@ class Paper(models.Model):
     pub_date = models.DateField('publication date', blank=True)
     authors = models.TextField()
     abstract = models.TextField()
+    url = models.URLField(max_length=200)
     openaccess = models.BooleanField()
     def published(self):
         if not self.pub_date:

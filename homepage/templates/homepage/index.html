@@ -52,7 +52,17 @@
 
 			<h2><a href="#">Research</a></h2>
 			<h3>"Selfish users make busier systems" </h3>
-            <p>My latest paper is here...</p>
+            {% if latest_paper_list %}
+            <p>A list of my latest papers is available here:</p>
+                <ul>
+                {% for paper in latest_paper_list  %}
+                    <li>{{paper.title}} in {{paper.journal}} {% if paper.openaccess %} (Open access) {% endif %}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <br/>
+            <p>A full list of all my courses can be found <a href="#", target="_blank">here</a>
+			<br />
 			<br />
 
 			<h2><a href="#">Outreach</a></h2>
