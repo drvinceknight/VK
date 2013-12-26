@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url(r'^polls/', include('polls.urls', namespace='polls')),
     url(r'^research/', include('research.urls', namespace='research')),
     url(r'^teaching/', include('teaching.urls', namespace='teaching')),
+    url(r'^outreach/', include('outreach.urls', namespace='outreach')),
 )

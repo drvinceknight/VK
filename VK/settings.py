@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'vids',
     'teaching',
     'research',
+    'outreach',
 )
 
 MIDDLEWARE_CLASSES = (
