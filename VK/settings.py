@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'teaching',
     'research',
     'outreach',
+    'coolstuff',
 )
 
 MIDDLEWARE_CLASSES = (
