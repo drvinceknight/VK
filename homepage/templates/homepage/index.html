@@ -104,7 +104,7 @@
             {% if latest_commits %}
                 <ul>
                 {% for commit in latest_commits %}
-                    <li>{{ commit }}</li>
+                    <li><em>{{ commit.date }}: </em>{{ commit.message }}</li>
                 {% endfor %}
                 </ul>
             {% else %}

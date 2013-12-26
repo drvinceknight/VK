@@ -6,37 +6,33 @@
 <head>
 	<meta name="author" content="www.vincent-knight.com" />
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-	<title>VK: {{paper.title}}</title>
+	<title>VK: Teaching</title>
 </head>
 <body>
 	<div id="content">
 		<h1><span class="hr">Vince Knight</h1>
 		<ul id="top">
-			<li><a href="/">Home</a></li>
+			<li><a class="current" href="#">Home</a></li>
 			<li><a href="#">Teaching</a></li>
-			<li><a class="current" href="#">Research</a></li>
+			<li><a href="#">Research</a></li>
 			<li><a href="#">Outreach</a></li>
 			<li><a href="#">Cool Stuff</a></li>
 		</ul>
 
 		<div id="intro">
-			<p>These are my research pages with information about my interests, papers and grants. You are looking at the specific page for "{{paper.title}}".</p>
+			<p>This is my page about teaching.</p>
 		</div>
 
 		<div id="main">
 
-        <h2>"{{ paper.title }}"</h2>
-            <p><strong>Published in {{ paper.journal }} ({{ paper.pub_date }})</strong></p>
+			<h2><a href="#">Teaching</a></h2>
+			<h3>"That student is taught the best who is told the least." Moore.</h3>
+            </br>
 
-            <h3>Abstract:</h3>
-            <p>{{ paper.abstract }}</p>
+            Teaching stuff.
 
-            {% if paper.url %}
-               <p><em> The paper can be found <a href={{paper.url}} target="_blank">here</a> {% if paper.openaccess %} and is open access! {% else %} but is sadly behind a paywall (please email me if you would like a copy). {% endif %}</em></p>
-            {% endif %}
 
         </div>
-
 		<div id="left">
 			<h3>Social Media</h3>
 			<ul>
