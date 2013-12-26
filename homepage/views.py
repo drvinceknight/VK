@@ -6,13 +6,20 @@ from urlparse import urlparse
 from vids.models import Video
 from teaching.models import Course
 from research.models import Paper
+import time
+
+def commitdate(commit):
+    """
+    Returns date of a commit
+    """
+    return time.strftime("%Y-%m-%d-%H-%M",time.gmtime(commit.committed_date))
 
 def index(request):
     latest_video_list = Video.objects.all().order_by('-pub_date')[:6]
 
     latest_paper_list = Paper.objects.all().order_by('-pub_date')[:6]
 
-    latest_commits = [c.message for c in Repo("./").iter_commits('Head', max_count=5)]
+    latest_commits = ["%s: %s" % (commitdate(c), c.message) for c in Repo("./").iter_commits('Head', max_count=5)]
 
     all_course_list = Course.objects.all().order_by('-title')
     current_course_list = [c for c in all_course_list if c.currently_taught()]
