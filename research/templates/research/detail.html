@@ -1,68 +1,34 @@
-{% load staticfiles %}
+{% extends "base.html" %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'homepage/style.css' %}" />
+{% block title %}
+VK: {{paper.title}}
+{% endblock %}
 
-
-<head>
-	<meta name="author" content="www.vincent-knight.com" />
-	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-	<title>VK: {{paper.title}}</title>
-</head>
-<body>
-	<div id="content">
-		<h1><span class="hr">Vince Knight</h1>
-		<ul id="top">
+{% block menu %}
 			<li><a href="/">Home</a></li>
-			<li><a href="#">Teaching</a></li>
-			<li><a class="current" href="#">Research</a></li>
-			<li><a href="#">Outreach</a></li>
-			<li><a href="#">Cool Stuff</a></li>
-		</ul>
+			<li><a href="/teaching/">Teaching</a></li>
+			<li><a class="current" href="/research">Research</a></li>
+			<li><a href="/outreach">Outreach</a></li>
+			<li><a href="/coolstuff">Cool Stuff</a></li>
+{% endblock %}
 
-		<div id="intro">
-			<p>These are my research pages with information about my interests, papers and grants. You are looking at the specific page for "{{paper.title}}".</p>
-		</div>
+{% block intro %}
+<p>These are my research pages with information about my interests, papers and grants. You are looking at the specific page for "{{paper.title}}".</p>
+{% endblock %}
 
-		<div id="main">
+{% block main %}
 
-        <h2>"{{ paper.title }}"</h2>
-            <p><strong>Published in {{ paper.journal }} ({{ paper.pub_date }})</strong></p>
 
-            <h3>Abstract:</h3>
-            <p>{{ paper.abstract }}</p>
 
-            {% if paper.url %}
-               <p><em> The paper can be found <a href={{paper.url}} target="_blank">here</a> {% if paper.openaccess %} and is open access! {% else %} but is sadly behind a paywall (please email me if you would like a copy). {% endif %}</em></p>
-            {% endif %}
+<h2>"{{ paper.title }}"</h2>
+    <p><strong>Published in {{ paper.journal }} ({{ paper.pub_date }})</strong></p>
 
-        </div>
+    <h3>Abstract:</h3>
+    <p>{{ paper.abstract }}</p>
 
-		<div id="left">
-			<h3>Social Media</h3>
-			<ul>
-				<li><a href="https://plus.google.com/+VincentKnight/posts", target="_blank">G+: +Vincent Knight</a></li>
-				<li><a href="http://www.youtube.com/user/DrVinceKnight/", target="_blank">YouTube: +Vincent Knight</a></li>
-				<li><a href="https://github.com/drvinceknight", target="_blank">Github: drvinceknight</a></li>
-				<li><a href="http://drvinceknight.blogspot.co.uk/", target="_blank">My blog: Un peu de math</a></li>
-				<li><a href="https://twitter.com/drvinceknight", target="_blank">Twitter: @drvinceknight</a></li>
-			</ul>
-            <br /><br />
+    {% if paper.url %}
+       <p><em> The paper can be found <a href={{paper.url}} target="_blank">here</a> {% if paper.openaccess %} and is open access! {% else %} but is sadly behind a paywall (please email me if you would like a copy). {% endif %}</em></p>
+    {% endif %}
 
-			<h3>Latest Commits (this page is pushed here)</h3>
-            {% if latest_commits %}
-                <ul>
-                {% for commit in latest_commits %}
-                    <li><em>{{ commit.date }}: </em>{{ commit.message }}</li>
-                {% endfor %}
-                </ul>
-            {% else %}
-                <p>No commits are available.</p>
-            {% endif %}
-		</div>
+{% endblock %}
 
-		<div id="footer">
-			<p>Design for this website by Vince Knight based on a design by: Luka Cvrk, <a title="Awsome Web Templates" href="http://www.solucija.com/">Solucija</a></p>
-		</div>
-	</div>
-</body>
-</html>
