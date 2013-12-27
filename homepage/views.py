@@ -19,7 +19,7 @@ class Commit():
 def index(request):
     latest_video_list = Video.objects.all().order_by('-pub_date')[:6]
 
-    latest_paper_list = Paper.objects.all().order_by('-pub_date')[:6]
+    latest_paper_list = Paper.objects.all().order_by('-pub_date')[:5]
 
     latest_commits = [Commit(c)  for c in Repo("./").iter_commits('Head', max_count=5)]
 

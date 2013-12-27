@@ -15,8 +15,8 @@ VK: {{paper.title}}
     <h3>Abstract:</h3>
     <p>{{ paper.abstract }}</p>
 
-    {% if paper.url %}
-       <p><em> The paper can be found <a href={{paper.url}} target="_blank">here</a> {% if paper.openaccess %} and is open access! {% else %} but is sadly behind a paywall (please email me if you would like a copy). {% endif %}</em></p>
+    {% if paper.paperurl %}
+       <p><em> The paper can be found <a href={{paper.paperurl}} target="_blank">here</a> {% if paper.openaccess %} and is open access! {% else %} but is sadly behind a paywall (please email me if you would like a copy). {% endif %}</em></p>
     {% endif %}
 
 {% endblock %}
