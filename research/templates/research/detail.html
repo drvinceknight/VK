@@ -1,15 +1,7 @@
-{% extends "base.html" %}
+{% extends "research/index.html" %}
 
 {% block title %}
 VK: {{paper.title}}
-{% endblock %}
-
-{% block menu %}
-			<li><a href="/">Home</a></li>
-			<li><a href="/teaching/">Teaching</a></li>
-			<li><a class="current" href="/research">Research</a></li>
-			<li><a href="/outreach">Outreach</a></li>
-			<li><a href="/coolstuff">Cool Stuff</a></li>
 {% endblock %}
 
 {% block intro %}
@@ -17,9 +9,6 @@ VK: {{paper.title}}
 {% endblock %}
 
 {% block main %}
-
-
-
 <h2>"{{ paper.title }}"</h2>
     <p><strong>Published in {{ paper.journal }} ({{ paper.pub_date }})</strong></p>
 
