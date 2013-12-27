@@ -56,8 +56,8 @@
             <p>A list of my latest papers is available here:</p>
                 <ul>
                 {% for paper in latest_paper_list  %}
-                    {% if paper.url %}
-                        <li> <a href="/research/{{ paper.id }}">{{ paper.title }}</a>  in <a href="{{paper.url}}", target="_blank"> {{paper.journal}} {% if paper.openaccess %} (Open access) {% endif %} </a></li>
+                    {% if paper.paperurl %}
+                        <li> <a href="/research/{{ paper.id }}">{{ paper.title }}</a>  in <a href="{{paper.paperurl}}", target="_blank"> {{paper.journal}} {% if paper.openaccess %} (Open access) {% endif %} </a></li>
                     {% else %}
                         <li>  {{paper.title}} in {{paper.journal}} {% if paper.openaccess %} (Open access) {% endif %} </li>
                     {% endif %}
