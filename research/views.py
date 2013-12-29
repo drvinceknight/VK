@@ -10,7 +10,8 @@ from research.models import Paper
 def index(request):
     latest_paper_list = Paper.objects.all().order_by('-pub_date')[:6]
 
-    latest_commits = [Commit(c)  for c in Repo("./").iter_commits('Head', max_count=5)]
+    #latest_commits = [Commit(c)  for c in Repo("./").iter_commits('Head', max_count=5)]
+    latest_commits = []
 
 
     context = {'latest_commits': latest_commits,
@@ -21,7 +22,8 @@ def index(request):
 
 def detail(request, paper_id):
 
-    latest_commits = [Commit(c)  for c in Repo("./").iter_commits('Head', max_count=5)]
+    #latest_commits = [Commit(c)  for c in Repo("./").iter_commits('Head', max_count=5)]
+    latest_commits = []
 
     paper = get_object_or_404(Paper, pk=paper_id)
 

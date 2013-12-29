@@ -15,7 +15,8 @@ def index(request):
 
     latest_paper_list = Paper.objects.all().order_by('-pub_date')[:6]
 
-    latest_commits = [Commit(c)  for c in Repo("./").iter_commits('Head', max_count=5)]
+#    latest_commits = [Commit(c)  for c in Repo("~/VK").iter_commits('Head', max_count=5)]
+    latest_commits = []
 
     all_course_list = Course.objects.all().order_by('-title')
     current_course_list = [c for c in all_course_list if c.currently_taught()]
