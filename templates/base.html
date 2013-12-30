@@ -52,7 +52,7 @@
                 <h3>Latest Commits (this page is pushed here)</h3>
                     <ul>
                     {% for commit in latest_commits %}
-                        <li><em>{{ commit.date }}: </em>{{ commit.message }}</li>
+                        <li><em>{{ commit }}</li>
                     {% endfor %}
                     </ul>
             {% endif %}
