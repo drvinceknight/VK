@@ -4,4 +4,5 @@ from coolstuff import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index),
+    url(r'^randomplot.png$', views.randomplot),
     )
