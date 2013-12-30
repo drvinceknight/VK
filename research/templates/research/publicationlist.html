@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-VK: Research
+VK: Publication list
 {% endblock %}
 
 {% block menu %}
@@ -20,12 +20,14 @@ VK: Research
 
 <h2>List of publications</h2>
 
-{% for paper in paper_list  %}
-    {% if paper.paperurl %}
-        <li> <a href="/research/{{ paper.id }}">{{ paper.title }}</a>  in <a href="{{paper.paperurl}}", target="_blank"> {{paper.journal}} {% if paper.openaccess %} (Open access) {% endif %} </a></li>
-    {% else %}
-        <li>  {{paper.title}} in {{paper.journal}} {% if paper.openaccess %} (Open access) {% endif %} </li>
-    {% endif %}
-{% endfor %}
+<ol reversed>
+    {% for paper in paper_list  %}
+        {% if paper.paperurl %}
+            <li> <a href="/research/{{ paper.id }}">{{ paper.title }}</a>  in <a href="{{paper.paperurl}}", target="_blank"> {{paper.journal}} {% if paper.openaccess %} (Open access) {% endif %} </a></li>
+        {% else %}
+            <li>  {{paper.title}} in {{paper.journal}} {% if paper.openaccess %} (Open access) {% endif %} </li>
+        {% endif %}
+    {% endfor %}
+</ol>
 
 {% endblock %}
