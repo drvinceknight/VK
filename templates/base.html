@@ -48,15 +48,13 @@
 			</ul>
             <br /><br />
 
-			<h3>Latest Commits (this page is pushed here)</h3>
             {% if latest_commits %}
-                <ul>
-                {% for commit in latest_commits %}
-                    <li><em>{{ commit.date }}: </em>{{ commit.message }}</li>
-                {% endfor %}
-                </ul>
-            {% else %}
-                <p>No commits are available.</p>
+                <h3>Latest Commits (this page is pushed here)</h3>
+                    <ul>
+                    {% for commit in latest_commits %}
+                        <li><em>{{ commit.date }}: </em>{{ commit.message }}</li>
+                    {% endfor %}
+                    </ul>
             {% endif %}
         {% endblock %}
 		</div>
