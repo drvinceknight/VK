@@ -20,6 +20,12 @@ VK: Teaching
 
 {% block main %}
 
-My teaching site.
+<p>Here is a full list of the courses I have taught, will teach and/or am currently teaching:</p>
+
+<ul>
+    {% for course in all_course_list  %}
+        <li><a href="{{course.url}}", target="_blank">{{ course.title }}</a></li>
+    {% endfor %}
+</ul>
 
 {% endblock %}
