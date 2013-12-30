@@ -31,3 +31,6 @@ def detail(request, paper_id):
                'latest_commits' : latest_commits}
     return render(request, 'research/detail.html', context)
 
+def publicationlist(request):
+    paper_list = Paper.objects.all().order_by('-pub_date')
+    return render_to_response('research/publicationlist.html', {'paper_list': paper_list})
