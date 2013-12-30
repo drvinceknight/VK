@@ -57,3 +57,7 @@ def randomplot(request):
     response=django.http.HttpResponse(content_type='image/png')
     canvas.print_png(response)
     return response
+
+def error(request):
+    import django
+    return django.http.HttpResponse('Error %s' % vince)
