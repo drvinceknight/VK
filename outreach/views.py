@@ -13,8 +13,16 @@ def index(request):
 
     latest_paper_list = Paper.objects.all().order_by('-pub_date')[:6]
 
-    #latest_commits = [Commit(c)  for c in Repo("./").iter_commits('Head', max_count=5)]
-    latest_commits = []
+    try:
+        # Attempt to read log file: I'm not sure I'm happy with it being hard rooted...
+        commitlog = open('/var/www/VK/static/commitlog', 'r')
+        commits = commitlog.read()
+        commits = commits.split('\n')
+        commitlog.close()
+        latest_commits = [c[c.index('commit') + len('commit: '):] for c in commits if 'commit: ' in c][::-1]
+        latest_commits = latest_commits[:5]
+    except:
+        latest_commits = []
 
     all_course_list = Course.objects.all().order_by('-title')
     current_course_list = [c for c in all_course_list if c.currently_taught()]
