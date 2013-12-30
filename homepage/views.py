@@ -27,7 +27,8 @@ def index(request):
         commits = commitlog.read()
         commits = commits.split('\n')
         commitlog.close()
-        latest_commits = [c[c.index('commit') + len('commit: '):] for c in commits if 'commit: ' in c][:5:-1]
+        latest_commits = [c[c.index('commit') + len('commit: '):] for c in commits if 'commit: ' in c][::-1]
+        latest_commits = latest_commits[:5]
     except:
         latest_commits = []
 
