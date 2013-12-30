@@ -3,8 +3,6 @@
 {% block main %}
 
     <h2><a href="/teaching">Teaching</a></h2>
-    <h3>"That student is taught the best who is told the least." Moore.</h3>
-    </br>
     {% if current_course_list %}
         <p>Here are courses I am currently teaching:</p>
         <ul>
@@ -23,9 +21,7 @@
         {% endfor %}
         </ul>
     {% endif %}
-    <br/>
     <p>A full list of all my courses can be found <a href="#", target="_blank">here</a></p>
-    <br />
 
     <h2><a href="/research">Research</a></h2>
     {% if latest_paper_list %}
@@ -40,16 +36,12 @@
         {% endfor %}
         </ul>
     {% endif %}
-    <br/>
     <p>A full list of all my papers can be found <a href="/research/publicationlist.html">here</a></p>
-    <br />
-    <br />
 
     <h2><a href="/outreach">Outreach</a></h2>
-    <h3>Mathematics is cool. </h3>
-    <br><br />
+    <p>I carry out a range of outreach activities and thoroughly enjoy this aspect of my work.</p>
     {% if latest_video_list %}
-        <p>Here is my latest video:</p>
+        <p>Here is my latest video on YouTube:</p>
         <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ latest_video_list.0.youtubeid }}" frameborder="0" allowfullscreen></iframe>
         <br></br>
         <p>Here are my previous {{latest_video_list|length|add:"-1"}} videos:</p>
