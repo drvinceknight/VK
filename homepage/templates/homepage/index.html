@@ -4,12 +4,13 @@
 
     <h2><a href="/teaching">Teaching</a></h2>
     {% if current_course_list %}
-        <p>Here are courses I am currently teaching:</p>
+        <p>Here are courses I am currently teaching:
         <ul>
         {% for course in current_course_list %}
             <li><a href="{{course.url}}", target="_blank">{{ course.title }}</a></li>
         {% endfor %}
         </ul>
+        </p>
     {% else %}
         <p>I am not currently teaching any courses.</p>
     {% endif %}
@@ -25,7 +26,7 @@
 
     <h2><a href="/research">Research</a></h2>
     {% if latest_paper_list %}
-    <p>Here is a list of my latest papers (click on the title to see the abstract and any other material):</p>
+    <p>Here is a list of my latest papers (click on the title to see the abstract and any other material):
         <ul>
         {% for paper in latest_paper_list  %}
             {% if paper.paperurl %}
@@ -35,6 +36,7 @@
             {% endif %}
         {% endfor %}
         </ul>
+    </p>
     {% endif %}
     <p>A full list of all my papers can be found <a href="/research/publicationlist.html">here</a></p>
 
@@ -44,12 +46,13 @@
         <p>Here is my latest video on YouTube:</p>
         <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ latest_video_list.0.youtubeid }}" frameborder="0" allowfullscreen></iframe>
         <br></br>
-        <p>Here are my previous {{latest_video_list|length|add:"-1"}} videos:</p>
+        <p>Here are my previous {{latest_video_list|length|add:"-1"}} videos:
         <ul>
         {% for video in latest_video_list|slice:"1:" %}
             <li><a href="{{video.url}}", target="_blank">{{ video.title }}</a></li>
         {% endfor %}
         </ul>
+        </p>
     {% else %}
         <p>No videos are available.</p>
     {% endif %}
