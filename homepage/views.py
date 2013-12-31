@@ -8,6 +8,8 @@ from teaching.models import Course
 from research.models import Paper
 import time
 
+# test
+
 class Commit():
     """
     Class to take commit from pythongit and create own commit
