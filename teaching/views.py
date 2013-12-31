@@ -38,3 +38,28 @@ def index(request):
                'latest_paper_list': latest_paper_list}
 
     return render_to_response('teaching/index.html', context)
+
+def computingformathematics(request):
+
+    try:
+        # Attempt to read log file: I'm not sure I'm happy with it being hard rooted...
+        commitlog = open('/var/www/VK/static/commitlog', 'r')
+        commits = commitlog.read()
+        commits = commits.split('\n')
+        commitlog.close()
+        latest_commits = [c[c.index('commit') + len('commit: '):] for c in commits if 'commit: ' in c][::-1]
+        latest_commits = latest_commits[:5]
+    except:
+        latest_commits = []
+
+    all_course_list = Course.objects.all().order_by('-title')
+    current_course_list = [c for c in all_course_list if c.currently_taught()]
+    upcoming_course_list = [c for c in all_course_list if c.taught_soon()]
+
+    context = {'latest_commits': latest_commits,
+               'all_course_list': all_course_list,
+               'current_course_list': current_course_list,
+               'upcoming_course_list': upcoming_course_list,}
+
+
+    return render_to_response('teaching/computingformathematics.html', context)
