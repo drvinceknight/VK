@@ -20,13 +20,24 @@ VK: Cool Stuff
 
 <h3>Useful links</h3>
 
-<p>Here are 5 randomly selected sites that I like:</p>
+<p>Here are {{link_selection|length}} randomly selected sites that I recommend:</p>
 
-<p>For a full list please click here.</p>
+<ol>
+{% for link in link_selection %}
 
-<img src="./randomplot.png">
+    <li><a href="{{ link.url }}" target="_blank">{{ link.title }}</a> {% if link.description %}({{link.description}}) {% endif %}</li>
 
-<p>Click <a href="./randomplot.png" target='_blank'>here</a> to generate a random graph using matplotlib.</p>
+{% endfor %}
+</ol>
 
-<p>Clicking this link should raise 500.html: <a href="./error">This raises an error.</a></p>
+<p><strong>For a full list please click <a href="./usefullinks.html">here</a></strong>.</p>
+
+<h3>Random plot</h3>
+
+<p>Here is a random plot that is generated using something similar to <a href="http://wiki.scipy.org/Cookbook/Matplotlib/Django" target="_blank">this</a>. Refresh this page to get a new plot.</p>
+
+<center>
+    <img height="420" src="./randomplot.png">
+</center>
+
 {% endblock %}
