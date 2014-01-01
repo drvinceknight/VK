@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
+{% block description %}
+This is the publication list of Dr. Vincent Knight.
+{% endblock %}
+
+{% block keywords %}
+    {% for paper in paper_list  %}
+        {{ paper.title }},{{ paper.keywords }},
+    {% endfor %}
+{% endblock %}
+
 {% block title %}
 VK: Publication list
 {% endblock %}
