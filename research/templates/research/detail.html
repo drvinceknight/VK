@@ -1,5 +1,13 @@
 {% extends "disqusbase.html" %}
 
+{% block description %}
+This page include information relevant to the paper entitled: '{{paper.title}}'.
+{% endblock %}
+
+{% block keywords %}
+    {{paper.keywords}}
+{% endblock %}
+
 {% block title %}
 VK: {{paper.title}}
 {% endblock %}

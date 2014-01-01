@@ -11,6 +11,7 @@ class Paper(models.Model):
     pub_date = models.DateField('publication date', blank=True)
     authors = models.TextField()
     abstract = models.TextField()
+    keywords = models.TextField()
     paperurl = models.URLField(max_length=200, blank=True)
     supplementaryurl = models.URLField(max_length=200, blank=True)
     supplementaryfile = models.FileField(upload_to="./research/supplementaryfiles", blank=True)
