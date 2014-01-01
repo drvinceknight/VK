@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+class UsefullLink(models.Model)
+    title = models.CharField(max_length=500)
+    url = models.URLField(max_length=200, blank=True)
+    description = models.TextField()
