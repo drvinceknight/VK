@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from git import Repo
 
 from homepage.views import Commit
-from research.models import Paper
+from research.models import Paper, Project
 
 def index(request):
     latest_paper_list = Paper.objects.all().order_by('-pub_date')[:6]
@@ -65,3 +65,22 @@ def publicationlist(request):
                'latest_commits' : latest_commits}
 
     return render_to_response('research/publicationlist.html', context)
+
+def projectdetail(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+
+    try:
+        # Attempt to read log file: I'm not sure I'm happy with it being hard rooted...
+        commitlog = open('/var/www/VK/static/commitlog', 'r')
+        commits = commitlog.read()
+        commits = commits.split('\n')
+        commitlog.close()
+        latest_commits = [c[c.index('commit') + len('commit: '):] for c in commits if 'commit: ' in c][::-1]
+        latest_commits = latest_commits[:5]
+    except:
+        latest_commits = []
+
+    context = {'project' : project,
+               'latest_commits' : latest_commits}
+
+    return render(request, 'research/projectdetail.html', context)
