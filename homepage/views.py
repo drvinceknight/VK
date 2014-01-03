@@ -5,7 +5,7 @@ from urlparse import urlparse
 
 from vids.models import Video
 from teaching.models import Course
-from research.models import Paper
+from research.models import Paper, Project
 import time
 
 class Commit():
@@ -20,6 +20,7 @@ def index(request):
     latest_video_list = Video.objects.all().order_by('-pub_date')[:6]
 
     latest_paper_list = Paper.objects.all().order_by('-pub_date')[:5]
+    current_project_list = Project.objects.all()
 
     try:
         # Attempt to read log file: I'm not sure I'm happy with it being hard rooted...
@@ -41,6 +42,7 @@ def index(request):
                'all_course_list': all_course_list,
                'current_course_list': current_course_list,
                'upcoming_course_list': upcoming_course_list,
+               'current_project_list': current_project_list,
                'latest_paper_list': latest_paper_list}
 
     return render_to_response('homepage/index.html', context)

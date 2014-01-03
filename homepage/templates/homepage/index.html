@@ -39,6 +39,15 @@
     </p>
     {% endif %}
     <p>A full list of all my papers can be found <a href="/research/publicationlist.html">here</a></p>
+    {% if current_project_list %}
+    <p>Here are some projects I am currently working on:
+        {% for project in current_project_list %}
+            <li> <a href="/research/projects/{{ project.id }}">{{ project.title }}</a>  </li>
+        {% endfor %}
+
+    </p>
+
+    {% endif %}
 
     <h2><a href="/outreach">Outreach</a></h2>
     <p>I carry out a range of outreach activities and thoroughly enjoy this aspect of my work.</p>
