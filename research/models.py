@@ -4,13 +4,13 @@ from django.utils import timezone
 
 class Paper(models.Model):
     title = models.CharField(max_length=500)
+    pub_date = models.DateField('publication date')
+    authors = models.TextField()
+    abstract = models.TextField()
     journal = models.CharField(max_length=500, blank=True)
     volume = models.CharField(max_length=500, blank=True)
     issue = models.CharField(max_length=500, blank=True)
     pages = models.CharField(max_length=500, blank=True)
-    publication_date = models.DateField('publication date', blank=True)
-    authors = models.TextField()
-    abstract = models.TextField()
     keywords = models.TextField(blank=True)
     paperurl = models.URLField(max_length=200, blank=True)
     supplementaryurl = models.URLField(max_length=200, blank=True)
