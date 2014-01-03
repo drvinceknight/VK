@@ -32,5 +32,6 @@ class Project(models.Model):
     supplementaryfile = models.FileField(upload_to="./research/supplementaryfiles", blank=True)
     complete = models.BooleanField()
     paperurl = models.URLField(max_length=200, blank=True)
+    keywords = models.TextField(blank=True)
     def __unicode__(self):
         return self.title

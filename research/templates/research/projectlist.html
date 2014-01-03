@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
 {% block description %}
-This is the publication list of Dr. Vincent Knight.
+This is the list of current research projects for Dr Vincent Knight.
 {% endblock %}
 
 {% block keywords %}
+    {% for project in current_project_list %}
+        {{ project.title }},{{ project.keywords }},
+    {% endfor %}
 {% endblock %}
 
 {% block title %}
