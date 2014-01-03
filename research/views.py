@@ -84,3 +84,22 @@ def projectdetail(request, project_id):
                'latest_commits' : latest_commits}
 
     return render(request, 'research/projectdetail.html', context)
+
+def projectlist(request):
+    try:
+        # Attempt to read log file: I'm not sure I'm happy with it being hard rooted...
+        commitlog = open('/var/www/VK/static/commitlog', 'r')
+        commits = commitlog.read()
+        commits = commits.split('\n')
+        commitlog.close()
+        latest_commits = [c[c.index('commit') + len('commit: '):] for c in commits if 'commit: ' in c][::-1]
+        latest_commits = latest_commits[:5]
+    except:
+        latest_commits = []
+
+    current_project_list = [project for project in Project.objects.all() if not project.complete]
+
+    context = {'current_project_list' : current_project_list,
+               'latest_commits' : latest_commits}
+
+    return render(request, 'research/projectlist.html', context)

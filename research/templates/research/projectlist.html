@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block description %}
+This is the publication list of Dr. Vincent Knight.
+{% endblock %}
+
+{% block keywords %}
+{% endblock %}
+
+{% block title %}
+VK: Current project list
+{% endblock %}
+
+{% block menu %}
+			<li><a href="/">Home</a></li>
+			<li><a href="/teaching/">Teaching</a></li>
+			<li><a class="current" href="/research">Research</a></li>
+			<li><a href="/outreach">Outreach</a></li>
+			<li><a href="/coolstuff">Cool Stuff</a></li>
+{% endblock %}
+
+{% block intro %}
+<p>These are my current research projects.</p>
+{% endblock %}
+
+{% block main %}
+
+{% if current_project_list %}
+<h2>List of projects</h2>
+<p>Here are my current projects (click on one to see more details):
+    <ol>
+        {% for project in current_project_list %}
+        <li><a href="./{{ project.id}}">{{project.title}}</a></li>
+        {% endfor %}
+    </ol>
+</p>
+{% endif %}
+{% endblock %}

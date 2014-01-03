@@ -7,4 +7,5 @@ urlpatterns = patterns('',
     url(r'^(?P<paper_id>\d+)/$', views.detail, name='detail'),
     url(r'^publicationlist.html$', views.publicationlist, name='publicationlist'),
     url(r'^projects/(?P<project_id>\d+)/$', views.projectdetail, name='projectdetail'),
+    url(r'^projects/$', views.projectlist, name='projectlist'),
 )
