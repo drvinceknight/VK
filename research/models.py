@@ -23,3 +23,10 @@ class Paper(models.Model):
         return self.pub_date <= now
     def __unicode__(self):
         return self.title
+
+class Project(models.Model):
+    title = models.CharField(max_length=500)
+    description = models.TextField()
+    collaborators = models.TextField(blank=True)
+    supplementaryurl = models.URLField(max_length=200, blank=True)
+    supplementaryfile = models.FileField(upload_to="./research/supplementaryfiles", blank=True)
