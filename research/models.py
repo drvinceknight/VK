@@ -8,7 +8,7 @@ class Paper(models.Model):
     volume = models.CharField(max_length=500, blank=True)
     issue = models.CharField(max_length=500, blank=True)
     pages = models.CharField(max_length=500, blank=True)
-    pub_date = models.DateField('publication date')
+    publication_date = models.DateField('publication date', blank=True)
     authors = models.TextField()
     abstract = models.TextField()
     keywords = models.TextField(blank=True)
