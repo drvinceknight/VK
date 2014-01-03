@@ -20,7 +20,7 @@ def index(request):
     latest_video_list = Video.objects.all().order_by('-pub_date')[:6]
 
     latest_paper_list = Paper.objects.all().order_by('-pub_date')[:5]
-    current_project_list = Project.objects.all()
+    current_project_list = [project for project in Project.objects.all() if not project.complete]
 
     try:
         # Attempt to read log file: I'm not sure I'm happy with it being hard rooted...
