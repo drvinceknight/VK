@@ -30,3 +30,5 @@ class Project(models.Model):
     collaborators = models.TextField(blank=True)
     supplementaryurl = models.URLField(max_length=200, blank=True)
     supplementaryfile = models.FileField(upload_to="./research/supplementaryfiles", blank=True)
+    def __unicode__(self):
+        return self.title
