@@ -8,7 +8,7 @@ from homepage.views import Commit
 from research.models import Paper
 
 def index(request):
-    latest_paper_list = Paper.objects.all().order_by('-pub_date')[:6]
+    latest_paper_list = Paper.objects.all().order_by('-publication_date')[:6]
 
     try:
         # Attempt to read log file: I'm not sure I'm happy with it being hard rooted...
@@ -59,7 +59,7 @@ def publicationlist(request):
     except:
         latest_commits = []
 
-    paper_list = Paper.objects.all().order_by('-pub_date')
+    paper_list = Paper.objects.all().order_by('-publication_date')
 
     context = {'paper_list' : paper_list,
                'latest_commits' : latest_commits}
