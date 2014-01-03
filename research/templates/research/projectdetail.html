@@ -30,7 +30,12 @@ VK: {{project.title}}
 <p>Collaborators: {{project.collaborators}}</p>
 {% endif %}
 
+{% if project.complete %}
+<p><strong> This project is now finished{% if project.paperurl %}: the corresponding paper can be found <a href="{{project.paperurl}}" target="_blank">here</a>{% endif %}.</strong></p>
+{% endif %}
+
 <p>{{project.description}}</p>
+
 {% endblock %}
 
 
