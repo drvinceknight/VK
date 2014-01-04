@@ -30,7 +30,7 @@ VK: Current project list
 
 <h2>List of projects</h2>
 {% if current_project_list %}
-<p>Here are my current projects (click on one to see more details):
+<p>Here are (in no particular order) my current projects (click on one to see more details):
     <ol>
         {% for project in current_project_list %}
         <li><a href="./{{ project.id}}">{{project.title}}</a></li>
