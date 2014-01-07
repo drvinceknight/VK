@@ -3,6 +3,8 @@ from blog.models import Post
 from blog.forms import BlogAdminForm
 
 class PostAdmin(admin.ModelAdmin):
+    # A full text form for content:
+    form = BlogAdminForm
     # fields display on change list
     list_display = ['title', 'description']
     # fields to filter the change list with
@@ -15,7 +17,5 @@ class PostAdmin(admin.ModelAdmin):
     save_on_top = True
     # prepopulate the slug from the title - big timesaver!
     prepopulated_fields = {"slug": ("title",)}
-    # A full text form for content:
-    form = BlogAdmingForm
 
 admin.site.register(Post, PostAdmin)

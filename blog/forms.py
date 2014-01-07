@@ -1,4 +1,5 @@
 from writingfield import FullScreenTextarea
+from django import forms
 
 class BlogAdminForm(forms.ModelForm):
 
