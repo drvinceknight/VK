@@ -6,8 +6,8 @@ class Post(models.Model):
     slug = models.SlugField(unique=True, max_length=255, blank=True)
     description = models.CharField(max_length=255, blank=True)
     content = models.TextField(blank=True)
-    published = models.BooleanField(default=True, blank=True)
-    pubdate = models.DateTimeField(blank=True)
+    published = models.BooleanField(default=False, blank=True)
+    pubdate = models.DateTimeField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
