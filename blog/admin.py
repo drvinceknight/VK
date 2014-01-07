@@ -1,5 +1,6 @@
 from django.contrib import admin
 from blog.models import Post
+from blog.forms import BlogAdminForm
 
 class PostAdmin(admin.ModelAdmin):
     # fields display on change list
@@ -14,5 +15,7 @@ class PostAdmin(admin.ModelAdmin):
     save_on_top = True
     # prepopulate the slug from the title - big timesaver!
     prepopulated_fields = {"slug": ("title",)}
+    # A full text form for content:
+    form = BlogAdmingForm
 
 admin.site.register(Post, PostAdmin)
