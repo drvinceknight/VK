@@ -14,38 +14,16 @@ def index(request):
     numberoflinks = 5
     link_selection = sample(UsefullLink.objects.all(), numberoflinks)
 
-    try:
-        # Attempt to read log file: I'm not sure I'm happy with it being hard rooted...
-        commitlog = open('/var/www/VK/static/commitlog', 'r')
-        commits = commitlog.read()
-        commits = commits.split('\n')
-        commitlog.close()
-        latest_commits = [c[c.index('commit') + len('commit: '):] for c in commits if 'commit: ' in c][::-1]
-        latest_commits = latest_commits[:5]
-    except:
-        latest_commits = []
-
-    context = {'link_selection': link_selection,
-               'latest_commits': latest_commits,}
+    context = {'link_selection': link_selection}
 
     return render_to_response('coolstuff/index.html', context)
 
 def usefullinks(request):
     links = UsefullLink.objects.all().order_by("title")
 
-    try:
-        # Attempt to read log file: I'm not sure I'm happy with it being hard rooted...
-        commitlog = open('/var/www/VK/static/commitlog', 'r')
-        commits = commitlog.read()
-        commits = commits.split('\n')
-        commitlog.close()
-        latest_commits = [c[c.index('commit') + len('commit: '):] for c in commits if 'commit: ' in c][::-1]
-        latest_commits = latest_commits[:5]
-    except:
-        latest_commits = []
 
-    context = {'links': links,
-               'latest_commits': latest_commits,}
+    context = {'links': links}
+
 
     return render_to_response('coolstuff/usefullinks.html', context)
 

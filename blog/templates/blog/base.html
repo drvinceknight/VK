@@ -9,9 +9,9 @@
 <head>
     <meta name="author" content="Vincent Knight" />
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <meta name="description" content="{% block description %} Personal webpage of Dr Vincent Knight. Mathematician at Cardiff University. {% endblock %}">
+    <meta name="description" content="{% block description %} Blog about Mathematics, Operational Research, Education and Programming. By Vincent Knight: Mathematician at Cardiff University. {% endblock %}">
     <meta name="keywords" content="Mathematics, Math, Maths, Cardiff, Game Theory, Queueing Theory, Queuing Theory, Operational Research, Operations Research, OR, Python, Sage, MathEd, Google Plus, {% block keywords %} {% endblock %}">
-    <title>{% block title %} Vince Knight {% endblock %}</title>
+    <title>{% block title %} Un peu de math {% endblock %}</title>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -27,14 +27,12 @@
 </head>
 <body>
     <div id="content">
-        <h1><span class="hr">Vince Knight</h1>
+        <h1><span class="hr">Un peu de math</h1>
         <ul id="top">
         {% block menu %}
             <li><a class="current" href="#">Home</a></li>
-            <li><a href="/teaching/">Teaching</a></li>
-            <li><a href="/research">Research</a></li>
-            <li><a href="/outreach">Outreach</a></li>
-            <li><a href="/coolstuff">Cool Stuff</a></li>
+            <li><a href="/latestpost/">Latest post</a></li>
+            <li><a href="/">Personal Website</a></li>
         {% endblock %}
         </ul>
 
@@ -44,35 +42,18 @@
         {% endblock %}
         </div>
 
-        <h2><strong>This site is in production if you can't find what you're looking for please go to: <a target= '_blank' href='https://sites.google.com/site/vincentknight/'>https://sites.google.com/site/vincentknight/</a></strong></h2>
-        <br></br>
 
-        <div id="main">
-        {% block main %}
+{% block main %}
 
 
-        {% endblock %}
-        </div>
-        <div id="left">
-            {% block sidebar %}
-            <h3>Contact me</h3>
-            <ul>
-                <li><a href="https://plus.google.com/+VincentKnight/posts", target="_blank">G+: +Vincent Knight</a></li>
-                <li><a href="http://www.youtube.com/user/DrVinceKnight/", target="_blank">YouTube: +Vincent Knight</a></li>
-                <li><a href="https://github.com/drvinceknight", target="_blank">Github: drvinceknight</a></li>
-                <li><a href="http://drvinceknight.blogspot.co.uk/", target="_blank">My blog: Un peu de math</a></li>
-                <li><a href="https://twitter.com/drvinceknight", target="_blank">Twitter: @drvinceknight</a></li>
-                <li><a href="mailto:knightva@cf.ac.uk", target="_blank">email: knightva@cf.ac.uk</a></li>
-            </ul>
-            <br /><br />
-        {% endblock %}
-        </div>
+{% endblock %}
 
         <div id="footer">
             {% block footer %}
             <p>Design for this website by Vince Knight based on a design by: Luka Cvrk, <a title="Awsome Web Templates" href="http://www.solucija.com/">Solucija</a></p>
             {% endblock %}
         </div>
+
     </div>
 </body>
 </html>

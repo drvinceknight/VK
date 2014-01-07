@@ -1,0 +1,35 @@
+{% extends "blog/base.html" %}
+
+{% block description %} This site contains information regarding the research of Dr Vincent Knight. {% endblock %}
+
+{% block keywords %} Healthcare, Game Theory, Queueing Theory, Research, Papers, Publication, Grants {% endblock %}
+
+{% block menu %}
+    <li><a class="current" href="#">Home</a></li>
+    <li><a href="/unpeudemath/latestpost/">Latest post</a></li>
+    <li><a href="/unpeudemath/">Personal Website</a></li>
+{% endblock %}
+
+{% block intro %}
+<p>My name is Vince Knight and this is where I blog about things that interest me: Mathematics, Education, Operational Research and Code.</p>
+{% endblock %}
+
+{% block main %}
+
+
+{% for post in posts %}
+<h2>
+    <a href="/unpeudemath/{{post.slug}}">
+        {{post.title}}
+    </a>
+</h2>
+<p>{{post.description}}</p>
+<p>
+    Posted on
+    <time datetime="{{post.created|date:"c"}}">
+    {{post.created|date}}
+    </time>
+</p>
+{% endfor %}
+
+{% endblock %}
