@@ -36,24 +36,44 @@
         {% endblock %}
         </ul>
 
+
         <div id="intro">
         {% block intro %}
             <p>I am a lecturer in Operational Research at Cardiff University with research interests in Game theory and Queueing theory applied to healthcare systems.</p>
         {% endblock %}
         </div>
 
+        {% block oldsite %}
+        <p>I have moved my old blog from <a href="http://drvinceknight.blogspot.co.uk/">drvinceknight.blogspot.co.uk/</a> to here so if you are looking for some of my old posts try there...</p>
+        {% endblock %}
 
-{% block main %}
+        <div id="main">
+        {% block main %}
 
 
-{% endblock %}
+        {% endblock %}
+        </div>
+        <div id="left">
+            {% block sidebar %}
+            <h3>Contact me</h3>
+            <ul>
+                <li><a href="https://plus.google.com/+VincentKnight/posts", target="_blank">G+: +Vincent Knight</a></li>
+                <li><a href="http://www.youtube.com/user/DrVinceKnight/", target="_blank">YouTube: +Vincent Knight</a></li>
+                <li><a href="https://github.com/drvinceknight", target="_blank">Github: drvinceknight</a></li>
+                <li><a href="http://drvinceknight.blogspot.co.uk/", target="_blank">My blog: Un peu de math</a></li>
+                <li><a href="https://twitter.com/drvinceknight", target="_blank">Twitter: @drvinceknight</a></li>
+                <li><a href="mailto:knightva@cf.ac.uk", target="_blank">email: knightva@cf.ac.uk</a></li>
+            </ul>
+            <br /><br />
+        {% endblock %}
+        </div>
 
         <div id="footer">
             {% block footer %}
             <p>Design for this website by Vince Knight based on a design by: Luka Cvrk, <a title="Awsome Web Templates" href="http://www.solucija.com/">Solucija</a></p>
             {% endblock %}
         </div>
-
     </div>
+
 </body>
 </html>

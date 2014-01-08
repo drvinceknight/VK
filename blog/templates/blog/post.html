@@ -1,31 +1,35 @@
-{% extends "blog/base.html" %}
+{% extends "disqusbase.html" %}
 
-{% block description %} This site contains information regarding the research of Dr Vincent Knight. {% endblock %}
+{% block description %}
+{{post.description}}
+{% endblock %}
 
-{% block keywords %} Healthcare, Game Theory, Queueing Theory, Research, Papers, Publication, Grants {% endblock %}
+{% block keywords %}
+    {{post.keywords}}
+{% endblock %}
+
+{% block bigtitle %} Un peu de math {% endblock %}
+
+{% block title %}
+Un peu de math: {{post.title}}
+{% endblock %}
 
 {% block menu %}
-    <li><a href="/unpeudemath/">Home</a></li>
-    <li><a href="/unpeudemath/latestpost/">Latest post</a></li>
-    <li><a href="/">Personal Website</a></li>
+            <li><a href="/unpeudemath">Home</a></li>
+            <li><a href="/unpeudemath/latestpost/">Latest post</a></li>
+            <li><a href="/">Personal Website</a></li>
+{% endblock %}
+
+{% block oldsite %}
+<p>I have moved my old blog from <a href="http://drvinceknight.blogspot.co.uk/">drvinceknight.blogspot.co.uk/</a> to here so if you are looking for some of my old posts try there...</p>
 {% endblock %}
 
 {% block intro %}
-<p>{{post.title}}</p>
+<p><strong>{{post.title}}</strong> <em>posted on</em> <time datetime="{{post.created|date:"c"}}"> {{post.created|date}}</p>
 {% endblock %}
 
 {% block main %}
-
-            <p>
-                Posted on
-                <time datetime="{{post.created|date:"c"}}">
-                {{post.created|date}}
-                </time>
-            </p>
-        <p class="description">
-            {{post.description}}
-        </p>
-        {{post.content|safe}}
-    </article>
-
+{{post.content|safe}}
 {% endblock %}
+
+{% block disqusid %} "{{post.id}}"; {% endblock %}

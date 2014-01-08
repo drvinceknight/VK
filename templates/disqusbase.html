@@ -27,7 +27,7 @@
 </head>
 <body>
     <div id="content">
-        <h1><span class="hr">Vince Knight</h1>
+        <h1><span class="hr">{% block bigtitle %}Vince Knight{% endblock %}</h1>
         <ul id="top">
         {% block menu %}
             <li><a class="current" href="#">Home</a></li>
@@ -44,8 +44,10 @@
         {% endblock %}
         </div>
 
+        {% block oldsite %}
         <h2><strong>This site is in production if you can't find what you're looking for please go to: <a target= '_blank' href='https://sites.google.com/site/vincentknight/'>https://sites.google.com/site/vincentknight/</a></strong></h2>
         <br></br>
+        {% endblock %}
 
         <div id="main">
         {% block main %}
@@ -55,9 +57,10 @@
 
         {% endblock %}
 
+        <br></br>
         <h3>Comments </h3>
         <p>(I am experimenting with a discussion board powered by <a href='http://disqus.com/' target='_blank'>Disqus</a>. You should be able to login with an account on a service you probably already use like Google, twitter etc...)</p>
-        <br>
+        <br></br>
 
          <div id="disqus_thread"></div>
             <script type="text/javascript">
