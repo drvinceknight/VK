@@ -62,7 +62,16 @@
                 <li><a href="mailto:knightva@cf.ac.uk", target="_blank">email: knightva@cf.ac.uk</a></li>
             </ul>
             <br /><br />
-        {% endblock %}
+
+
+            <h3>News</h3>
+                <ul>
+            {% for item in news %}
+                <li>{{ item.pub_date }}: <a href="/news/{{ item.slug }}">{{item.title}}</a></li>
+            {% endfor %}
+                </ul>
+            <br /><br />
+            {% endblock %}
         </div>
 
         <div id="footer">

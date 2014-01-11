@@ -6,6 +6,7 @@ from urlparse import urlparse
 from vids.models import Video
 from teaching.models import Course
 from research.models import Paper, Project
+from news.models import Item
 import time
 
 class Commit():
@@ -17,6 +18,8 @@ class Commit():
         self.date = time.strftime("%Y-%m-%d-%H-%M",time.gmtime(c.committed_date))
 
 def index(request):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
+
     latest_video_list = Video.objects.all().order_by('-pub_date')[:6]
 
     latest_paper_list = Paper.objects.all().order_by('-pub_date')[:5]
@@ -31,6 +34,8 @@ def index(request):
                'current_course_list': current_course_list,
                'upcoming_course_list': upcoming_course_list,
                'current_project_list': current_project_list,
-               'latest_paper_list': latest_paper_list}
+               'latest_paper_list': latest_paper_list,
+               'news': news,
+               }
 
     return render_to_response('homepage/index.html', context)
