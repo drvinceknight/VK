@@ -13,7 +13,7 @@ VK: {{item.title}}
 {% endblock %}
 
 {% block intro %}
-<p>{% if item.url %}<a href="{{item.url}}" target="_blank">{{item.title}}</a>{% else %} {{item.title}} {% endif %}</p>
+<p>News: {% if item.url %}<a href="{{item.url}}" target="_blank">{{item.title}}</a>{% else %} {{item.title}} {% endif %}</p>
 {% endblock %}
 
 {% block main %}

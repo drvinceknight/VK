@@ -15,5 +15,10 @@ def index(request):
     return render_to_response('news/index.html', context)
 
 def item(request, slug):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
     item = get_object_or_404(Item, slug=slug)
-    return render_to_response('news/item.html', {'item': item})
+
+    context = {'news': news,
+                'item': item,}
+
+    return render_to_response('news/item.html', context)
