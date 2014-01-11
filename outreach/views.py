@@ -7,8 +7,10 @@ from vids.models import Video
 from teaching.models import Course
 from research.models import Paper
 from homepage.views import Commit
+from news.views import Item
 
 def index(request):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
     latest_video_list = Video.objects.all().order_by('-pub_date')[:6]
 
     latest_paper_list = Paper.objects.all().order_by('-pub_date')[:6]
@@ -21,6 +23,7 @@ def index(request):
                'all_course_list': all_course_list,
                'current_course_list': current_course_list,
                'upcoming_course_list': upcoming_course_list,
+               'news': news,
                'latest_paper_list': latest_paper_list}
 
     return render_to_response('outreach/index.html', context)
