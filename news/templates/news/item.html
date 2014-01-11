@@ -1,0 +1,26 @@
+{% extends "disqusbase.html" %}
+
+{% block description %}
+{{item.description}}
+{% endblock %}
+
+{% block keywords %}
+    {{item.keywords}}
+{% endblock %}
+
+{% block title %}
+VK: {{item.title}}
+{% endblock %}
+
+{% block intro %}
+<p>{% if item.url %}<a href="{{item.url}}" target="_blank">{{item.title}}</a>{% else %} {{item.title}} {% endif %}</p>
+{% endblock %}
+
+{% block main %}
+<h3>{% if item.url %}<a href="{{item.url}}" target="_blank">{{item.title}}</a>{% else %} {{item.title}} {% endif %}</h3>
+<p>(Posted: {{item.pub_date}})</p>
+
+{{item.description|safe}}
+{% endblock %}
+
+{% block disqusid %} "{{item.slug}}"; {% endblock %}

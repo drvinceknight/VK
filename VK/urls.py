@@ -11,5 +11,6 @@ urlpatterns = patterns('',
     url(r'^teaching/', include('teaching.urls', namespace='teaching')),
     url(r'^outreach/', include('outreach.urls', namespace='outreach')),
     url(r'^coolstuff/', include('coolstuff.urls', namespace='coolstuff')),
+    url(r'^news/', include('news.urls', namespace='news')),
     url(r'^unpeudemath/', include('blog.urls', namespace='blog')),
 )
