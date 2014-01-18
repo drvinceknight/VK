@@ -16,5 +16,6 @@ class LettersOfRecommendation(models.Model):
     content = models.TextField(blank=True)
     published = models.BooleanField(default=False, blank=True)
     pub_date = models.DateTimeField()
+    url = models.URLField(max_length=500, blank=True)
     def __unicode__(self):
         return "By %s for %s" % (self.author, self.name)
