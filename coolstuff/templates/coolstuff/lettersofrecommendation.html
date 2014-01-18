@@ -1,0 +1,25 @@
+{% extends "coolstuff/index.html" %}
+
+{% block title %}
+VK: Letters of recommendation
+{% endblock %}
+
+{% block intro %}
+<p>Here are some letters of recommendation.</p>
+{% endblock %}
+
+{% block main %}
+
+<h3>Letters of recommendation</h3>
+
+<p>Click on each to view it in plain html. A github repository with some of the corresponding LaTeX templates can be found <a href='https://github.com/drvinceknight/LettersOfRecommendation' target='_blank'>here</a>.</p>
+
+<ul>
+{% for letter in letters %}
+
+    <li><a href='./lettersofrecommendation/{{letter.id}}'>By {{letter.author}} for {{letter.name}}</a></li>
+
+{% endfor %}
+</ul>
+
+{% endblock %}
