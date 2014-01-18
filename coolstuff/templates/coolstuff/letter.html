@@ -21,4 +21,7 @@
 <p><a href='/coolstuff/lettersofrecommendation'>Home</a>
 {% if letter.url %}
 <a href='{{letter.url}}' target='_blank'>Source</a>
+{% endif %}
+{% if letter.pdf %}
+<a href='{{letter.pdf}}' target='_blank'>pdf</a>
 {% endif %}</p>
