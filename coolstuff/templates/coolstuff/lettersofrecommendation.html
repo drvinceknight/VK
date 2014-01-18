@@ -21,7 +21,7 @@ VK: Letters of recommendation
 <ul>
 {% for letter in letters %}
 
-    <li><a href='./lettersofrecommendation/{{letter.id}}'>For {{letter.name}} by {{letter.author}}</a></li>
+    <li><a href='./lettersofrecommendation/{{letter.id}}'>For {{letter.name}} by {{letter.author}}.</a>{% if letter.pdf %} <a href='{{letter.pdf}}' target='_blank'>[pdf]</a>{% endif %}</li>
 
 {% endfor %}
 </ul>
