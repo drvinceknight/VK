@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render_to_response
 from git import Repo
 from urlparse import urlparse
@@ -6,6 +6,7 @@ from urlparse import urlparse
 from news.models import Item
 
 from coolstuff.models import UsefullLink
+from coolstuff.models import LettersOfRecommendation
 import time
 
 from random import sample
@@ -30,8 +31,27 @@ def usefullinks(request):
     context = {'links': links,
                'news': news }
 
-
     return render_to_response('coolstuff/usefullinks.html', context)
+
+
+def lettersofrecommendation(request):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
+    letters = LettersOfRecommendation.objects.filter(published=True)
+
+
+    context = {'letters': letters,
+               'news': news }
+
+    return render_to_response('coolstuff/lettersofrecommendation.html', context)
+
+def letter(request, letter_id):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
+    letter = get_object_or_404(LettersOfRecommendation, pk=letter_id)
+
+    context = {'letter': letter,
+               'news': news }
+
+    return render_to_response('coolstuff/letter.html', context)
 
 def randomplot(request):
     import random
