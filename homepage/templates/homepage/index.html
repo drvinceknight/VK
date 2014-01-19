@@ -50,7 +50,21 @@
     {% endif %}
 
     <h2><a href="/outreach">Outreach</a></h2>
-    <p>I carry out a range of outreach activities and thoroughly enjoy this aspect of my work.</p>
+    <h3><a href='http://drvinceknight.blogspot.co.uk' target='_blank'>Blog</a></h3>
+    {% if latest_blog_post_list %}
+        <p>Here is my latest blog post at <a href='http://drvinceknight.blogspot.co.uk' target='_blank'>Un peu de math</a>:</p>
+        <p><strong><a href='{{ latest_blog_post_list.0.url }}' target='_blank'>{{latest_blog_post_list.0.title}}</a>:</strong> {{latest_blog_post_list.0.description}}</p>
+        <p>Here are my previous {{latest_blog_post_list|length|add:"-1"}} posts:
+        <ul>
+        {% for post in latest_blog_post_list|slice:"1:" %}
+            <li><a href="{{post.url}}", target="_blank"><span title="{{post.description}}">{{ post.title }}</span></a></li>
+        {% endfor %}
+        </ul>
+        </p>
+    {% else %}
+        <p>No blog posts are available.</p>
+    {% endif %}
+    <h3><a href='http://www.youtube.com/channel/UCJoZNbN4ziZBIfzC1zjuHYA' target='_blank'>YouTube Channel</a></h3>
     {% if latest_video_list %}
         <p>Here is my latest video on YouTube:</p>
         <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ latest_video_list.0.youtubeid }}" frameborder="0" allowfullscreen></iframe>
