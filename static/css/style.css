@@ -28,6 +28,9 @@ p  { margin: 5px 0 15px; line-height: 1.6em; }
 #left h3 { border-bottom: 1px solid #ccc; margin: 0 0 10px; }
 #left img { margin: 0 3px 3px 0; border: 2px solid #eee; padding: 2px; }
 #left li { display: block; border-bottom: 1px solid #ccc}
-	#left li a { display: block; border-bottom: 1px solid #ccc; padding: 5px 5px; }
+    #left li a { display: block; border-bottom: 1px solid #ccc; padding: 5px 5px; }
+#emptymain { margin: 0 0 15px; }
+#emptymain ul {padding: 0 20px }
+#emptymain ol {padding: 0 20px}
 #footer { clear: both; padding: 15px 0; border-top: 1px solid #ccc; }
 	#r { float: right; }
