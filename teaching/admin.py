@@ -9,7 +9,7 @@ class CourseAdmin(admin.ModelAdmin):
     fieldsets = [
         (None,               {'fields': ['title']}),
         ('Date information', {'fields': ['start_date', 'end_date'], 'classes': ['collapse']}),
-        ('Details', {'fields': ['description', 'url', 'slug', 'code'], 'classes': ['collapse']}),
+        ('Details', {'fields': ['description', 'url', 'slug', 'code', 'keywords'], 'classes': ['collapse']}),
     ]
     inlines = [ContentInline]
     list_display = ('title', 'start_date')

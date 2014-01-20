@@ -1,6 +1,7 @@
 {% extends "disqusbase.html" %}
 
-{% block description %}Class{% endblock %}
+{% block description %}{{course.description}}{% endblock %}
+{% block keywords %}{{course.keywords}}{% endblock %}
 
 {% block title %}
 VK: {{course.title}}
