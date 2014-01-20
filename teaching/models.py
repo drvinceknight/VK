@@ -16,5 +16,4 @@ class Course(models.Model):
         return self.start_date <= now <  self.end_date
     def taught_soon(self):
         now = timezone.now()
-        return now - datetime.timedelta(days=21) <= self.start_date <  now
-
+        return self.start_date > now >= self.start_date - datetime.timedelta(days=21)
