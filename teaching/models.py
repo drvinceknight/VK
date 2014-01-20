@@ -17,3 +17,10 @@ class Course(models.Model):
     def taught_soon(self):
         now = timezone.now()
         return self.start_date > now >= self.start_date - datetime.timedelta(days=21)
+
+
+class Content(models.Model):
+    poll = models.ForeignKey(Course)
+    title = models.CharField(max_length=200)
+    content = models.TextField(blank=True)
+    slug = models.SlugField(unique=True, blank=True)
