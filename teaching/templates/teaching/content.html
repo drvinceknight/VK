@@ -1,6 +1,8 @@
 {% extends "disqusempty.html" %}
 
-{% block description %}Teaching stuff{% endblock %}
+{% block description %}content.description{% endblock %}
+
+{% block keywords %}content.keywords{% endblock %}
 
 {% block title %}
 VK: content.course - content.content
@@ -12,6 +14,10 @@ VK: content.course - content.content
 			<li><a href="/research">Research</a></li>
 			<li><a href="/outreach">Outreach</a></li>
 			<li><a href="/coolstuff">Cool Stuff</a></li>
+{% endblock %}
+
+{% block intro %}
+<p><a href="/teaching/{{course.slug}}">{{course.title}}</a> - {{content.title}}</p>
 {% endblock %}
 
 {% block main %}
