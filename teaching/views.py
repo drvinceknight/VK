@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render_to_response
 from git import Repo
 from urlparse import urlparse
 
 from vids.models import Video
-from teaching.models import Course
+from teaching.models import Course, Content
 from research.models import Paper
 from news.models import Item
 import time
@@ -29,6 +29,28 @@ def index(request):
                'latest_paper_list': latest_paper_list}
 
     return render_to_response('teaching/index.html', context)
+
+def courseindex(request, slug):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
+    course = get_object_or_404(Course, slug=slug)
+
+    context = {'course': course,
+               'news': news,}
+
+    return render_to_response('teaching/courseindex.html', context)
+
+
+def coursecontent(request, courseslug, slug):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
+    course = get_object_or_404(Course, slug=courseslug)
+    content = get_object_or_404(Content, course=course, slug=slug)
+
+
+    context = {'course': course,
+               'content': content,
+               'news': news,}
+
+    return render_to_response('teaching/content.html', context)
 
 def computingformathematics(request):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]

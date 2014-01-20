@@ -1,0 +1,21 @@
+{% extends "disqusbase.html" %}
+
+{% block description %}Teaching stuff{% endblock %}
+
+{% block title %}
+VK: content.course - content.content
+{% endblock %}
+
+{% block menu %}
+			<li><a href="/">Home</a></li>
+			<li><a class="current" href="/teaching/">Teaching</a></li>
+			<li><a href="/research">Research</a></li>
+			<li><a href="/outreach">Outreach</a></li>
+			<li><a href="/coolstuff">Cool Stuff</a></li>
+{% endblock %}
+
+{% block main %}
+{{content.content|safe}}
+{% endblock %}
+
+{% block disqusid %} "{{course.slug}}-{{content.slug}}"; {% endblock %}

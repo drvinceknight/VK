@@ -8,7 +8,8 @@ class ContentInline(admin.TabularInline):
 class CourseAdmin(admin.ModelAdmin):
     fieldsets = [
         (None,               {'fields': ['title']}),
-        ('Date information', {'fields': ['start_date'], 'classes': ['collapse']}),
+        ('Date information', {'fields': ['start_date', 'end_date'], 'classes': ['collapse']}),
+        ('Details', {'fields': ['description', 'url', 'slug', 'code'], 'classes': ['collapse']}),
     ]
     inlines = [ContentInline]
     list_display = ('title', 'start_date')

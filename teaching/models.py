@@ -9,6 +9,7 @@ class Course(models.Model):
     description = models.TextField()
     start_date = models.DateTimeField('start date')
     end_date = models.DateTimeField('end date')
+    slug = models.SlugField(unique=True, blank=True)
     def __unicode__(self):
         return self.title
     def currently_taught(self):
@@ -20,7 +21,7 @@ class Course(models.Model):
 
 
 class Content(models.Model):
-    poll = models.ForeignKey(Course)
+    course = models.ForeignKey(Course)
     title = models.CharField(max_length=200)
     content = models.TextField(blank=True)
     slug = models.SlugField(unique=True, blank=True)
