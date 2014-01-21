@@ -1,8 +1,12 @@
 from django.contrib import admin
-from teaching.models import Course, Content
+from teaching.models import Course, Content, ReadingListItem
 
 class ContentInline(admin.TabularInline):
     model = Content
+    extra = 0
+
+class ReadingListInline(admin.TabularInline):
+    model = ReadingListItem
     extra = 0
 
 class CourseAdmin(admin.ModelAdmin):
@@ -11,7 +15,7 @@ class CourseAdmin(admin.ModelAdmin):
         ('Date information', {'fields': ['start_date', 'end_date'], 'classes': ['collapse']}),
         ('Details', {'fields': ['description', 'url', 'slug', 'code', 'keywords', 'endnote'], 'classes': ['collapse']}),
     ]
-    inlines = [ContentInline]
+    inlines = [ContentInline, ReadingListInline]
     list_display = ('title', 'start_date')
     list_filter = ['start_date']
     search_fields = ['description']
