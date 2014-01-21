@@ -21,7 +21,23 @@ VK: {{content.course}} - {{content.title}}
 {% endblock %}
 
 {% block main %}
+{% if prevcontent %}
+<p align="left">Prev: <a href="/teaching/{{course.slug}}/{{prevcontent.slug}}">{{prevcontent.title}}</a></p>
+{% endif %}
+
+{% if nextcontent %}
+<p align="right">Next: <a href="/teaching/{{course.slug}}/{{nextcontent.slug}}">{{nextcontent.title}}</a></p>
+{% endif %}
+
 {{content.content|safe}}
+
+{% if prevcontent %}
+<p align="left">Prev: <a href="/teaching/{{course.slug}}/{{prevcontent.slug}}">{{prevcontent.title}}</a></p>
+{% endif %}
+
+{% if nextcontent %}
+<p align="right">Next: <a href="/teaching/{{course.slug}}/{{nextcontent.slug}}">{{nextcontent.title}}</a></p>
+{% endif %}
 {% endblock %}
 
 {% block disqusid %} "{{course.slug}}-{{content.slug}}"; {% endblock %}
