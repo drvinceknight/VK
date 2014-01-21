@@ -4,7 +4,7 @@
 {% block keywords %}{{course.keywords}}{% endblock %}
 
 {% block title %}
-VK: {{course.title}}
+VK: {{course.title}} Reading list
 {% endblock %}
 
 {% block intro %}
@@ -20,31 +20,19 @@ VK: {{course.title}}
 {% endblock %}
 
 {% block main %}
-{{course.description|safe}}
+<h3>Reading List</h3>
 <p>
 <ol>
-{% for content in course.content_set.all %}
-    <li>
-    <a href='./{{content.slug}}'>{{content.title}}</a>
-    </li>
-{% endfor %}
-</ol>
-</p>
-
-{% if course.readinglistitem_set.all %}
-<p>
-Here is the <a href='./readinglist'>reading list</a> for this course:
-<ol>
-{% for item in course.readinglistitem_set.all %}
+{% for item in readinglist %}
     <li>
     <a href='{{item.url}}' target='_blank'>{{item.title}}</a> by {{item.author}}
+    {% if item.description %}
+        <p>{{item.description|safe}}</p>
+    {% endif %}
     </li>
 {% endfor %}
 </ol>
 </p>
-{% endif %}
-
-<font size="1">{{course.endnote|safe}}</font>
 {% endblock %}
 
-{% block disqusid %} "{{course.slug}}"; {% endblock %}
+{% block disqusid %} "{{course.slug}}-readinglist"; {% endblock %}

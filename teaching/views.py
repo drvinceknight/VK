@@ -4,7 +4,7 @@ from git import Repo
 from urlparse import urlparse
 
 from vids.models import Video
-from teaching.models import Course, Content
+from teaching.models import Course, Content, ReadingListItem
 from research.models import Paper
 from news.models import Item
 import time
@@ -38,6 +38,16 @@ def courseindex(request, slug):
                'news': news,}
 
     return render_to_response('teaching/courseindex.html', context)
+
+def readinglist(request, slug):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
+    course = get_object_or_404(Course, slug='gametheory')
+    readinglist = ReadingListItem.objects.filter(course=course).order_by('author')
+
+    context = {'news':news,
+               'course': course,
+               'readinglist': readinglist,}
+    return render_to_response('teaching/readinglist.html', context)
 
 
 def coursecontent(request, courseslug, slug):
