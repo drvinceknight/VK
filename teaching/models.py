@@ -7,6 +7,7 @@ class Course(models.Model):
     url = models.URLField(max_length=200, blank=True)
     code = models.CharField(max_length=200, blank=True)
     description = models.TextField()
+    endnote = models.TextField(blank=True)
     keywords = models.CharField(max_length=300, blank=True)
     start_date = models.DateTimeField('start date')
     end_date = models.DateTimeField('end date')

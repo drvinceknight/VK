@@ -20,8 +20,8 @@ VK: {{course.title}}
 {% endblock %}
 
 {% block main %}
+{{course.description|safe}}
 <p>
-{{course.description}}
 <ol>
 {% for content in course.content_set.all %}
     <li>
@@ -30,7 +30,7 @@ VK: {{course.title}}
 {% endfor %}
 </ol>
 </p>
-<p>{{course.endnote}}</p>
+<font size="1">{{course.endnote|safe}}</font>
 {% endblock %}
 
 {% block disqusid %} "{{course.slug}}"; {% endblock %}
