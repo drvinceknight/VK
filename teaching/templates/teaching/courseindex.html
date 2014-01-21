@@ -33,7 +33,7 @@ VK: {{course.title}}
 
 {% if course.readinglistitem_set.all %}
 <p>
-Here is the <a href='./readinglist'>reading list</a> for this course (alphabetical order by author):
+Here is the <a href='./readinglist'>reading list</a> for this course (alphabetical order):
 <ol>
 {% for item in course.readinglistitem_set.all %}
     <li>

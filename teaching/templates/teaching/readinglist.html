@@ -1,14 +1,14 @@
 {% extends "disqusbase.html" %}
 
 {% block description %}{{course.description}}{% endblock %}
-{% block keywords %}{{course.keywords}}{% endblock %}
+{% block keywords %}{{course.keywords}}, Reading List{% endblock %}
 
 {% block title %}
 VK: {{course.title}} Reading list
 {% endblock %}
 
 {% block intro %}
-<p><a href="/teaching/{{course.slug}}">{{course.title}}</a> - Reading list (alphabetical order by author)</p>
+<p><a href="/teaching/{{course.slug}}">{{course.title}}</a> - Reading list</p>
 {% endblock %}
 
 {% block menu %}
@@ -20,7 +20,7 @@ VK: {{course.title}} Reading list
 {% endblock %}
 
 {% block main %}
-<h3>Reading List</h3>
+<h3>Reading List (alphabetical order)</h3>
 <p>
 <ol>
 {% for item in readinglist %}
