@@ -30,6 +30,20 @@ VK: {{course.title}}
 {% endfor %}
 </ol>
 </p>
+
+{% if course.readinglistitem_set.all %}
+<p>
+Here is the <a href='./readinglist'>reading list</a> for this course:
+<ol>
+{% for item in course.readinglistitem_set.all %}
+    <li>
+    <a href='./{{item.url}}' target='_blank'>{{item.title}}</a> by {{item.author}}
+    </li>
+{% endfor %}
+</ol>
+</p>
+{% endif %}
+
 <font size="1">{{course.endnote|safe}}</font>
 {% endblock %}
 
