@@ -1,0 +1,47 @@
+{% extends "disqusempty.html" %}
+
+{% block description %}{{homework.description}}{% endblock %}
+
+{% block keywords %}{{homework.keywords}}{% endblock %}
+
+{% block title %}
+VK: {{homework.course}} - {{homework.title}}
+{% endblock %}
+
+{% block menu %}
+			<li><a href="/">Home</a></li>
+			<li><a class="current" href="/teaching/">Teaching</a></li>
+			<li><a href="/research">Research</a></li>
+			<li><a href="/outreach">Outreach</a></li>
+			<li><a href="/coolstuff">Cool Stuff</a></li>
+{% endblock %}
+
+{% block intro %}
+<p><a href="/teaching/{{course.slug}}">{{course.title}}</a> - {{homework.title}}</p>
+{% endblock %}
+
+{% block main %}
+{% if prevhomework %}
+<p align="left">Prev: <a href="/teaching/{{course.slug}}/{{prevhomework.slug}}">{{prevhomework.title}}</a></p>
+{% endif %}
+
+{% if nexthomework %}
+<p align="right">Next: <a href="/teaching/{{course.slug}}/{{nexthomework.slug}}">{{nexthomework.title}}</a></p>
+{% endif %}
+
+{{homework.hw|safe}}
+
+{% if homework.solutionpublished %}
+    <p><a href='./solution/{{homework.slug}}'>Solution available.</a></p>
+{% endif %}
+
+{% if prevhomework %}
+<p align="left">Prev: <a href="/teaching/{{course.slug}}/{{prevhomework.slug}}">{{prevhomework.title}}</a></p>
+{% endif %}
+
+{% if nexthomework %}
+<p align="right">Next: <a href="/teaching/{{course.slug}}/{{nexthomework.slug}}">{{nexthomework.title}}</a></p>
+{% endif %}
+{% endblock %}
+
+{% block disqusid %} "{{course.slug}}-{{homework.slug}}"; {% endblock %}

@@ -4,7 +4,7 @@ from git import Repo
 from urlparse import urlparse
 
 from vids.models import Video
-from teaching.models import Course, Content, ReadingListItem
+from teaching.models import Course, Content, ReadingListItem, HomeWork
 from research.models import Paper
 from news.models import Item
 import time
@@ -49,9 +49,38 @@ def readinglist(request, slug):
                'readinglist': readinglist,}
     return render_to_response('teaching/readinglist.html', context)
 
+def homework(request, courseslug, slug):
+    course = get_object_or_404(Course, slug=courseslug)
+    homework = get_object_or_404(HomeWork, course=course, slug=slug)
+
+    nexthomework = HomeWork.objects.filter(course=course).filter(id__gt=homework.id).order_by('id')
+    if len(nexthomework) > 0:
+        nexthomework = nexthomework[0]
+    else:
+        nexthomework = False
+    prevhomework = HomeWork.objects.filter(course=course).filter(id__lt=homework.id).order_by('-id')
+    if len(prevhomework) > 0:
+        prevhomework = prevhomework[0]
+    else:
+        prevhomework = False
+
+    context = {'course': course,
+               'homework': homework,
+               'nexthomework': nexthomework,
+               'prevhomework': prevhomework,}
+
+    return render_to_response('teaching/homework.html', context)
+
+def solution(request, courseslug, slug):
+    course = get_object_or_404(Course, slug=courseslug)
+    homework = get_object_or_404(HomeWork, course=course, slug=slug)
+
+    context = {'course': course,
+               'homework': homework,}
+
+    return render_to_response('teaching/solution.html', context)
 
 def coursecontent(request, courseslug, slug):
-    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
     course = get_object_or_404(Course, slug=courseslug)
     content = get_object_or_404(Content, course=course, slug=slug)
 
@@ -71,7 +100,6 @@ def coursecontent(request, courseslug, slug):
                'nextcontent': nextcontent,
                'prevcontent': prevcontent,
                'news': news,}
-
 
     return render_to_response('teaching/content.html', context)
 
