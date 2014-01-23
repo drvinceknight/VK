@@ -21,6 +21,7 @@ VK: {{course.title}}
 
 {% block main %}
 {{course.description|safe}}
+<h3>Content</h3>
 <p>
 <ol>
 {% for content in course.content_set.all %}
@@ -30,6 +31,20 @@ VK: {{course.title}}
 {% endfor %}
 </ol>
 </p>
+
+{% if course.homework_set.all %}
+<h3>Homework</h3>
+<p>
+<ol>
+{% for homework in course.homework_set.all %}
+    <li>
+    <a href='./homework/{{homework.slug}}'>{{homework.title}}</a>
+    <p>{{homework.description|safe}}</p>
+    </li>
+{% endfor %}
+</ol>
+
+{% endif %}
 
 {% if course.readinglistitem_set.all %}
 <p>
