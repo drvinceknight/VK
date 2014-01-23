@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     url(r'^PCUTL$', views.pcutl),
     url(r'^(?P<slug>[\w\-]+)/$', views.courseindex),
     url(r'^(?P<slug>[\w\-]+)/readinglist/$', views.readinglist),
+    url(r'^(?P<courseslug>[\w\-]+)/homework/(?P<slug>[\w\-]+)$', views.homework),
     url(r'^(?P<courseslug>[\w\-]+)/(?P<slug>[\w\-]+)/$', views.coursecontent),
     )
