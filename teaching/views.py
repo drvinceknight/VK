@@ -42,7 +42,7 @@ def courseindex(request, slug):
 def readinglist(request, slug):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
     course = get_object_or_404(Course, slug='gametheory')
-    readinglist = ReadingListItem.objects.filter(course=course).order_by('title')
+    readinglist = ReadingListItem.objects.filter(course=course)
 
     context = {'news':news,
                'course': course,
