@@ -22,11 +22,11 @@ VK: {{homework.course}} - {{homework.title}}
 
 {% block main %}
 {% if prevhomework %}
-<p align="left">Prev: <a href="/teaching/{{course.slug}}/{{prevhomework.slug}}">{{prevhomework.title}}</a></p>
+<p align="left">Prev: <a href="/teaching/{{course.slug}}/homework/{{prevhomework.slug}}">{{prevhomework.title}}</a></p>
 {% endif %}
 
 {% if nexthomework %}
-<p align="right">Next: <a href="/teaching/{{course.slug}}/{{nexthomework.slug}}">{{nexthomework.title}}</a></p>
+<p align="right">Next: <a href="/teaching/{{course.slug}}/homework/{{nexthomework.slug}}">{{nexthomework.title}}</a></p>
 {% endif %}
 
 {{homework.hw|safe}}
@@ -36,11 +36,11 @@ VK: {{homework.course}} - {{homework.title}}
 {% endif %}
 
 {% if prevhomework %}
-<p align="left">Prev: <a href="/teaching/{{course.slug}}/{{prevhomework.slug}}">{{prevhomework.title}}</a></p>
+<p align="left">Prev: <a href="/teaching/{{course.slug}}/homework/{{prevhomework.slug}}">{{prevhomework.title}}</a></p>
 {% endif %}
 
 {% if nexthomework %}
-<p align="right">Next: <a href="/teaching/{{course.slug}}/{{nexthomework.slug}}">{{nexthomework.title}}</a></p>
+<p align="right">Next: <a href="/teaching/{{course.slug}}/homework/{{nexthomework.slug}}">{{nexthomework.title}}</a></p>
 {% endif %}
 {% endblock %}
 
