@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^(?P<courseslug>[\w\-]+)/homework/(?P<slug>[\w\-]+)$', views.homework),
     url(r'^(?P<courseslug>[\w\-]+)/homework/solution/(?P<slug>[\w\-]+)$', views.solution),
     url(r'^(?P<courseslug>[\w\-]+)/(?P<slug>[\w\-]+)/$', views.coursecontent),
+    url(r'^(?P<courseslug>[\w\-]+)/alternative/(?P<slug>[\w\-]+)/$', views.alternativecontent),
     )

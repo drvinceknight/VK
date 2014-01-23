@@ -4,7 +4,7 @@ from git import Repo
 from urlparse import urlparse
 
 from vids.models import Video
-from teaching.models import Course, Content, ReadingListItem, HomeWork
+from teaching.models import Course, Content, ReadingListItem, HomeWork, AlternativeContent
 from research.models import Paper
 from news.models import Item
 import time
@@ -80,6 +80,29 @@ def solution(request, courseslug, slug):
 
     return render_to_response('teaching/solution.html', context)
 
+def alternativecontent(request, courseslug, slug):
+    course = get_object_or_404(Course, slug=courseslug)
+    content = get_object_or_404(AlternativeContent, course=course, slug=slug)
+
+    nextcontent = AlternativeContent.objects.filter(course=course).filter(id__gt=content.id).order_by('id')
+    if len(nextcontent) > 0:
+        nextcontent = nextcontent[0]
+    else:
+        nextcontent = False
+    prevcontent = AlternativeContent.objects.filter(course=course).filter(id__lt=content.id).order_by('-id')
+    if len(prevcontent) > 0:
+        prevcontent = prevcontent[0]
+    else:
+        prevcontent = False
+
+    context = {'course': course,
+               'content': content,
+               'nextcontent': nextcontent,
+               'prevcontent': prevcontent,
+               }
+
+    return render_to_response('teaching/content.html', context)
+
 def coursecontent(request, courseslug, slug):
     course = get_object_or_404(Course, slug=courseslug)
     content = get_object_or_404(Content, course=course, slug=slug)
@@ -99,7 +122,7 @@ def coursecontent(request, courseslug, slug):
                'content': content,
                'nextcontent': nextcontent,
                'prevcontent': prevcontent,
-               'news': news,}
+               }
 
     return render_to_response('teaching/content.html', context)
 

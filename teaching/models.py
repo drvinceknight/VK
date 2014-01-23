@@ -29,6 +29,15 @@ class Content(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     keywords = models.CharField(max_length=300, blank=True)
 
+class AlternativeContent(models.Model):
+    course = models.ForeignKey(Course)
+    title = models.CharField(max_length=200)
+    content = models.TextField(blank=True)
+    description = models.TextField()
+    slug = models.SlugField(unique=True, blank=True)
+    keywords = models.CharField(max_length=300, blank=True)
+    url = models.URLField(max_length=200, blank=True)
+
 class HomeWork(models.Model):
     course = models.ForeignKey(Course)
     title = models.CharField(max_length=200)

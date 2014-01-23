@@ -48,11 +48,16 @@ VK: {{course.title}}
 
 {% if course.alternativecontent_set.all %}
 <h3>Alternative Resources</h3>
+<p>
+<ol>
     {% for content in course.alternativecontent_set.all %}
         <li>
-        <a href='./{{content.slug}}'>{{content.title}}</a>
+        <a href='./alternative/{{content.slug}}'>{{content.title}}</a>
+        <p>{{content.description|safe}}</p>
         </li>
     {% endfor %}
+</ol>
+</p>
 {% endif %}
 
 {% if course.readinglistitem_set.all %}
