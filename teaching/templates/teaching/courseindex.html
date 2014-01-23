@@ -46,7 +46,17 @@ VK: {{course.title}}
 
 {% endif %}
 
+{% if course.alternativecontent_set.all %}
+<h3>Alternative Resources</h3>
+    {% for content in course.alternativecontent_set.all %}
+        <li>
+        <a href='./{{content.slug}}'>{{content.title}}</a>
+        </li>
+    {% endfor %}
+{% endif %}
+
 {% if course.readinglistitem_set.all %}
+<h3>Reading list</h3>
 <p>
 Here is the <a href='./readinglist'>reading list</a> for this course (ordered by relevance to course):
 <ol>
