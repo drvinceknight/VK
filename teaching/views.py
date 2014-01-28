@@ -144,3 +144,7 @@ def computingformathematics(request):
 def pcutl(request):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
     return render_to_response('teaching/pcutl.html', {'news':news})
+
+def fairmarks(request):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
+    return render_to_response('teaching/assigningfairindividualmarks.html', {'news':news})
