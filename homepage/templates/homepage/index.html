@@ -7,7 +7,7 @@
         <p>Here are courses I am currently teaching:
         <ul>
         {% for course in current_course_list %}
-            <li><a href="{{course.url}}", target="_blank">{{ course.title }}</a></li>
+            <li><a href="{{course.url}}">{{ course.title }}</a></li>
         {% endfor %}
         </ul>
         </p>
