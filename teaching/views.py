@@ -101,7 +101,7 @@ def alternativecontent(request, courseslug, slug):
                'prevcontent': prevcontent,
                }
 
-    return render_to_response('teaching/content.html', context)
+    return render_to_response('teaching/alternativecontent.html', context)
 
 def coursecontent(request, courseslug, slug):
     course = get_object_or_404(Course, slug=courseslug)
