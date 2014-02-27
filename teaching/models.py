@@ -28,6 +28,7 @@ class Content(models.Model):
     description = models.TextField()
     slug = models.SlugField(unique=True, blank=True)
     keywords = models.CharField(max_length=300, blank=True)
+    hide = models.BooleanField(blank=True, default=True)
 
 class AlternativeContent(models.Model):
     course = models.ForeignKey(Course)

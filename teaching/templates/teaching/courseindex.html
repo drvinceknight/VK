@@ -25,9 +25,11 @@ VK: {{course.title}}
 <p>
 <ol>
 {% for content in course.content_set.all %}
+    {% if not content.hide %}
     <li>
     <a href='./{{content.slug}}'>{{content.title}}</a>
     </li>
+    {% endif %}
 {% endfor %}
 </ol>
 </p>
