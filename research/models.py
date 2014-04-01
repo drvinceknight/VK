@@ -57,7 +57,7 @@ class Student(models.Model):
     def __unicode__(self):
         return "%s - %s - %s" % (self.category, self.studentname, self.projecttitle)
     class Meta:
-        ordering = ['category']
+        ordering = ['enddate']
     def current(self):
         return datetime.datetime.now().date() < self.enddate
     def open(self):
