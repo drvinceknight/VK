@@ -35,3 +35,27 @@ class Project(models.Model):
     keywords = models.TextField(blank=True)
     def __unicode__(self):
         return self.title
+
+
+class Student(models.Model):
+    studentname = models.CharField(max_length=500)
+    choices = [
+        ('CUROP','CUROP'),
+        ('Summer','Summer'),
+        ('PhD','PhD'),
+        ('BSc','BSc'),
+        ('MMath','MMath'),
+        ('Other','Other'),
+    ]
+    url = models.URLField(blank=True)
+    projecttitle = models.CharField(max_length=500,blank=True)
+    projectdescription = models.TextField(blank=True)
+    startdate = models.DateField(blank=True)
+    enddate = models.DateField(blank=True)
+    category = models.CharField(max_length=25, choices=choices, blank=True)
+    keywords = models.TextField(blank=True)
+    def __unicode__(self):
+        return "%s - %s - %s" % (self.category, self.studentname, self.projecttitle)
+    class Meta:
+        ordering = ['category']
+
