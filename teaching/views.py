@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render_to_response
+from django.http import Http404
 from git import Repo
 from urlparse import urlparse
 
@@ -109,11 +110,14 @@ def assessment(request, courseslug, slug):
     course = get_object_or_404(Course, slug=courseslug)
     content = get_object_or_404(Assessment, course=course, slug=slug)
 
-    context = {'course': course,
-               'content': content,
-               }
+    if content.released():
 
-    return render_to_response('teaching/alternativecontent.html', context)
+        context = {'course': course,
+                   'content': content,
+                   }
+
+        return render_to_response('teaching/alternativecontent.html', context)
+    raise Http404
 
 def coursecontent(request, courseslug, slug):
     course = get_object_or_404(Course, slug=courseslug)
