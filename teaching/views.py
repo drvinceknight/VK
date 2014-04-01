@@ -4,7 +4,7 @@ from git import Repo
 from urlparse import urlparse
 
 from vids.models import Video
-from teaching.models import Course, Content, ReadingListItem, HomeWork, AlternativeContent
+from teaching.models import Course, Content, ReadingListItem, HomeWork, AlternativeContent, Assessment
 from research.models import Paper
 from news.models import Item
 import time
@@ -33,9 +33,11 @@ def index(request):
 def courseindex(request, slug):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
     course = get_object_or_404(Course, slug=slug)
+    assessment = [item for item in Assessment.objects.filter(course=course) if item.released()]
 
     context = {'course': course,
-               'news': news,}
+               'news': news,
+               'assessment': assessment,}
 
     return render_to_response('teaching/courseindex.html', context)
 
