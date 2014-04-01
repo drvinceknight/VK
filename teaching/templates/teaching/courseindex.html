@@ -95,7 +95,7 @@ Here is the <a href='./readinglist'>reading list</a> for this course (ordered by
     <p>
     <ol>
     {% for item in assessment %}
-        <li><a href='./assessment/item.slug'>{{item.title}}</a></li>
+        <li><a href='./assessment/{{item.slug}}'>{{item.title}}</a></li>
     {% endfor %}
     </ol>
     </p>

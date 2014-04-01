@@ -105,6 +105,16 @@ def alternativecontent(request, courseslug, slug):
 
     return render_to_response('teaching/alternativecontent.html', context)
 
+def assessment(request, courseslug, slug):
+    course = get_object_or_404(Course, slug=courseslug)
+    content = get_object_or_404(Assessment, course=course, slug=slug)
+
+    context = {'course': course,
+               'content': content,
+               }
+
+    return render_to_response('teaching/alternativecontent.html', context)
+
 def coursecontent(request, courseslug, slug):
     course = get_object_or_404(Course, slug=courseslug)
     content = get_object_or_404(Content, course=course, slug=slug)
