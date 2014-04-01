@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block description %}
+Research students past and present.
+{% endblock %}
+
+{% block keywords %}
+    {% for project in current_project_list %}
+        {{ project.title }},{{ project.keywords }},
+    {% endfor %}
+{% endblock %}
+
+{% block title %}
+VK: Research students past and present.
+{% endblock %}
+
+{% block menu %}
+			<li><a href="/">Home</a></li>
+			<li><a href="/teaching/">Teaching</a></li>
+			<li><a class="current" href="/research">Research</a></li>
+			<li><a href="/outreach">Outreach</a></li>
+			<li><a href="/coolstuff">Cool Stuff</a></li>
+{% endblock %}
+
+{% block intro %}
+<p>Research students past and present.</p>
+{% endblock %}
+
+{% block main %}
+
+{% if currentstudents%}
+<h3>Current students</h3>
+<p>Here are my current research students:</p>
+
+<p>
+</ol>
+{% for student in currentstudents %}
+    <li><a href='./{{student.id}}'>{{student.category}}: {{student.studentname}}</a></li>
+{% endfor %}
+</ol>
+</p>
+{% endif %}
+
+{% if paststudents%}
+<h3>Past students</h3>
+<p>Here are my past research students:</p>
+
+<p>
+</ol>
+{% for student in paststudents %}
+    <li><a href='./{{student.id}}'>{{student.category}}: {{student.studentname}}</a></li>
+{% endfor %}
+</ol>
+</p>
+{% endif %}
+{% endblock %}

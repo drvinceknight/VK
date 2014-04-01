@@ -60,3 +60,5 @@ class Student(models.Model):
         ordering = ['category']
     def current(self):
         return datetime.datetime.now().date() < self.enddate
+    def open(self):
+        return self.studentname == '?'

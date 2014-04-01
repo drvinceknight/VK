@@ -12,11 +12,15 @@ from news.models import Item
 def index(request):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
     latest_paper_list = Paper.objects.all().order_by('-pub_date')[:6]
-    students = [student for student in Student.objects.all() if student.current()]
+    students = Student.objects.all()
+    currentstudents = [student for student in students if student.current() and student.studentname != '?']
+    openprojects = [student for student in students if student.current() and student.studentname == '?']
 
     context = {'latest_paper_list': latest_paper_list,
                'news':news,
-               'students':students}
+               'students':students,
+               'openprojects':openprojects,
+               'currentstudents':currentstudents}
 
     return render_to_response('research/index.html', context)
 
@@ -31,6 +35,20 @@ def researchstudent(request, student_id):
                'news' : news,}
 
     return render(request, 'research/researchstudent.html', context)
+
+def researchstudentindex(request):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
+
+    students = [student for student in Student.objects.all() if student.studentname != '?']
+    currentstudents = [student for student in students if student.current()]
+    paststudents = [student for student in students if student not in currentstudents]
+
+    context = {'students' : students,
+               'currentstudents': currentstudents,
+               'paststudents': paststudents,
+               'news' : news,}
+
+    return render(request, 'research/researchstudentindex.html', context)
 
 def detail(request, paper_id):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]

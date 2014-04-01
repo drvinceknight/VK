@@ -22,7 +22,7 @@ VK: {{student.projecttitle}}
 
 {% block intro %}
 {%if student.current %}
-<p>A description of one of my current research projects: "{{student.projecttitle}}" undertaken by {{student.studentname}}.</p>
+<p>A description of the research project: "{{student.projecttitle}}" {% if not student.open %}undertaken by {{student.studentname}}. {% endif %}</p>
 {% else %}
 <p>A description of one of my past research projects: "{{student.projecttitle}}" undertaken by {{student.studentname}}.</p>
 {% endif %}
