@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse
 from git import Repo
+import markdown
 
 from homepage.views import Commit
 from research.models import Paper, Project, Student
@@ -23,8 +24,10 @@ def researchstudent(request, student_id):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
 
     student = get_object_or_404(Student, pk=student_id)
+    description = markdown.markdown(student.projectdescription, safe_made='escape')
 
     context = {'student' : student,
+               'description' : description,
                'news' : news,}
 
     return render(request, 'research/researchstudent.html', context)

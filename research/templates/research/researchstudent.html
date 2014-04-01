@@ -1,0 +1,42 @@
+{% extends "disqusbase.html" %}
+
+{% block description %}
+<p>A page describing the research project: {{student.projecttitle}} by {{student.name}}</p>
+{% endblock %}
+
+{% block keywords %}
+    {{student.keywords}}
+{% endblock %}
+
+{% block title %}
+VK: {{student.projecttitle}}
+{% endblock %}
+
+{% block menu %}
+			<li><a href="/">Home</a></li>
+			<li><a href="/teaching/">Teaching</a></li>
+			<li><a class="current" href="/research">Research</a></li>
+			<li><a href="/outreach">Outreach</a></li>
+			<li><a href="/coolstuff">Cool Stuff</a></li>
+{% endblock %}
+
+{% block intro %}
+{%if student.current %}
+<p>A description of one of my current research projects: "{{student.projecttitle}}" undertaken by {{student.studentname}}.</p>
+{% else %}
+<p>A description of one of my past research projects: "{{student.projecttitle}}" undertaken by {{student.studentname}}.</p>
+{% endif %}
+{% endblock %}
+
+{% block main %}
+
+{{description|safe}}
+
+{% if student.url %}
+<p>You can find {{student.studentname}} <a href={{student.url}} target='_blank'>here</a>.</p>
+{% endif %}
+
+{% endblock %}
+
+
+{% block disqusid %} "project{{project.id}}"; {% endblock %}
