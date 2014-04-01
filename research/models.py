@@ -60,5 +60,3 @@ class Student(models.Model):
         ordering = ['category']
     def current(self):
         return datetime.datetime.now().date() < self.enddate
-    def slug(self):
-        return ''.join([self.studentname.replace(" ","-"), "-", str(self.startdate)])
