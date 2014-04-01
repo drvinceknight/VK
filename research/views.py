@@ -5,18 +5,29 @@ from django.core.urlresolvers import reverse
 from git import Repo
 
 from homepage.views import Commit
-from research.models import Paper, Project
+from research.models import Paper, Project, Student
 from news.models import Item
 
 def index(request):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
     latest_paper_list = Paper.objects.all().order_by('-pub_date')[:6]
+    students = [student for student in Student.objects.all() if student.current()]
 
     context = {'latest_paper_list': latest_paper_list,
-               'news':news}
+               'news':news,
+               'students':students}
 
     return render_to_response('research/index.html', context)
 
+def researchstudent(request, student_id):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
+
+    student = get_object_or_404(Student, pk=student_id)
+
+    context = {'student' : student,
+               'news' : news,}
+
+    return render(request, 'research/researchstudent.html', context)
 
 def detail(request, paper_id):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]

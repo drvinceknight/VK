@@ -8,4 +8,5 @@ urlpatterns = patterns('',
     url(r'^publicationlist.html$', views.publicationlist, name='publicationlist'),
     url(r'^projects/(?P<project_id>\d+)/$', views.projectdetail, name='projectdetail'),
     url(r'^projects/$', views.projectlist, name='projectlist'),
+    url(r'^researchstudents/(?P<student_id>[\w\-]+)/$', views.researchstudent),
 )

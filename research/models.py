@@ -58,4 +58,7 @@ class Student(models.Model):
         return "%s - %s - %s" % (self.category, self.studentname, self.projecttitle)
     class Meta:
         ordering = ['category']
-
+    def current(self):
+        return datetime.datetime.now().date() < self.enddate
+    def slug(self):
+        return ''.join([self.studentname.replace(" ","-"), "-", str(self.startdate)])
