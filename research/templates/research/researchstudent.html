@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block title %}
-VK: {{student.projecttitle}}
+VK: {{student.studentname}} - {{student.projecttitle}}
 {% endblock %}
 
 {% block menu %}
@@ -39,4 +39,4 @@ VK: {{student.projecttitle}}
 {% endblock %}
 
 
-{% block disqusid %} "project{{project.id}}"; {% endblock %}
+{% block disqusid %} "{{student.studentname}}-{{student.projecttitle}}-{{student.enddate}}"; {% endblock %}
