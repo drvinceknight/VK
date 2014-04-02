@@ -33,12 +33,11 @@ VK: {{category}} research students past and present.
 
 {% if currentstudents%}
 <h3>Current {{category}} students</h3>
-<p>Here are my current research students:</p>
 
 <p>
 <ol>
 {% for student in currentstudents %}
-    <li><a href='./{{student.id}}'>{{student.category}}: {{student.studentname}} - {{student.projecttitle}}</a></li>
+    <li><a href='/research/researchstudents/{{student.id}}'>{{student.category}}: {{student.studentname}} - {{student.projecttitle}}</a></li>
 {% endfor %}
 </ol>
 </p>
@@ -46,12 +45,11 @@ VK: {{category}} research students past and present.
 
 {% if paststudents%}
 <h3>Past {{category}} students</h3>
-<p>Here are my past research students:</p>
 
 <p>
 <ol>
 {% for student in paststudents %}
-    <li><a href='./{{student.id}}'>{{student.category}}: {{student.studentname}} - {{student.projecttitle}}</a></li>
+    <li><a href='/research/researchstudents/{{student.id}}'>{{student.category}}: {{student.studentname}} - {{student.projecttitle}}</a></li>
 {% endfor %}
 </ol>
 </p>

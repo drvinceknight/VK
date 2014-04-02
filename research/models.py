@@ -40,7 +40,6 @@ class Project(models.Model):
 class Student(models.Model):
     studentname = models.CharField(max_length=500)
     choices = [
-        ('CUROP','CUROP'),
         ('Summer','Summer'),
         ('PhD','PhD'),
         ('BSc','BSc'),

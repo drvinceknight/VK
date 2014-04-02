@@ -42,7 +42,7 @@ def researchstudentindex(request):
     students = [student for student in Student.objects.all() if student.studentname != '?']
     currentstudents = [student for student in students if student.current()]
     paststudents = [student for student in students if student not in currentstudents]
-    categories = sorted([choice[0] for choice in students[0].choices])  # For some reason choices need to be a list of 2-tuples
+    categories = sorted(list(set([student.category for student in students])))  # For some reason choices need to be a list of 2-tuples
 
     context = {'students' : students,
                'currentstudents': currentstudents,
