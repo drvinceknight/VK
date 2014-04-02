@@ -21,6 +21,7 @@ VK: Research
 {% endblock %}
 
 {% block main %}
+<h3>Overview</h3>
 
 <p>
 My interests mainly lie in these three fields:
@@ -45,17 +46,22 @@ My research is in the understanding and design of queueing systems, where indivi
 
 
 <h3>Research students</h3>
-<p>Working with research students is one of the most rewarding parts of my job. I'm always looking for to work with enthusiastic hard working students from 1st year undergraduate to PhD level. Please get in touch if this is something you might be interested in.</p>
+<p>Working with research students is one of the most rewarding parts of my job. I'm always looking to work with enthusiastic hard working students from 1st year undergraduate to PhD level. Please get in touch if this is something you might be interested in.</p>
 
 {% if openprojects %}
-<p>Here are some projects that have not yet found a student:</p>
+    {% if openprojects|length > 1 %}
+        <p>Here are some projects that have not yet found a student:</p>
+    {% else %}
+        <p>Here is a project that has not yet found a student:</p>
+    {% endif %}
+
 
 <p>
-    <ol>
+    <ul>
     {% for student in openprojects %}
         <li><a href='./researchstudents/{{student.id}}'>{{student.category}}: {{student.projecttitle}}</a> starting {{student.startdate}}</li>
     {% endfor %}
-    </ol>
+    </ul>
 </p>
 
 {% endif %}
