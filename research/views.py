@@ -42,13 +42,30 @@ def researchstudentindex(request):
     students = [student for student in Student.objects.all() if student.studentname != '?']
     currentstudents = [student for student in students if student.current()]
     paststudents = [student for student in students if student not in currentstudents]
+    categories = sorted([choice[0] for choice in students[0].choices])  # For some reason choices need to be a list of 2-tuples
 
     context = {'students' : students,
                'currentstudents': currentstudents,
                'paststudents': paststudents,
-               'news' : news,}
+               'news' : news,
+               'categories': categories}
 
     return render(request, 'research/researchstudentindex.html', context)
+
+def categorylist(request, category):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
+
+    students = [student for student in Student.objects.filter(category=category) if student.studentname != '?']
+    currentstudents = [student for student in students if student.current()]
+    paststudents = [student for student in students if student not in currentstudents]
+
+    context = {'students' : students,
+               'currentstudents': currentstudents,
+               'paststudents': paststudents,
+               'news' : news,
+               'category': category}
+
+    return render(request, 'research/researchstudentlist.html', context)
 
 def detail(request, paper_id):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]

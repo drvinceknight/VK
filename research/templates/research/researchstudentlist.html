@@ -1,17 +1,20 @@
 {% extends "base.html" %}
 
 {% block description %}
-Research students past and present.
+{{category}} research students past and present.
 {% endblock %}
 
 {% block keywords %}
-    {% for project in current_project_list %}
-        {{ project.title }},{{ project.keywords }},
+    {% for student in currentstudents %}
+        {{ student.projecttitle }},{{ student.keywords }},
+    {% endfor %}
+    {% for student in paststudents %}
+        {{ student.projecttitle }},{{ student.keywords }},
     {% endfor %}
 {% endblock %}
 
 {% block title %}
-VK: Research students past and present.
+VK: {{category}} research students past and present.
 {% endblock %}
 
 {% block menu %}
@@ -23,13 +26,13 @@ VK: Research students past and present.
 {% endblock %}
 
 {% block intro %}
-<p>Research students past and present.</p>
+<p>{{category}} research students past and present.</p>
 {% endblock %}
 
 {% block main %}
 
 {% if currentstudents%}
-<h3>Current students</h3>
+<h3>Current {{category}} students</h3>
 <p>Here are my current research students:</p>
 
 <p>
@@ -42,7 +45,7 @@ VK: Research students past and present.
 {% endif %}
 
 {% if paststudents%}
-<h3>Past students</h3>
+<h3>Past {{category}} students</h3>
 <p>Here are my past research students:</p>
 
 <p>
@@ -51,17 +54,6 @@ VK: Research students past and present.
     <li><a href='./{{student.id}}'>{{student.category}}: {{student.studentname}} - {{student.projecttitle}}</a></li>
 {% endfor %}
 </ol>
-</p>
-{% endif %}
-
-{% if categories %}
-<h3>By category</h3>
-<p>
-<ul>
-    {% for category in categories %}
-    <li><a href='./list/{{category}}'>{{category}}</a></li>
-    {% endfor %}
-</ul>
 </p>
 {% endif %}
 
