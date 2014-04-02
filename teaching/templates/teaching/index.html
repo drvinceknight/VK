@@ -30,10 +30,14 @@ VK: Teaching
 
 <p>Here is a full list of the courses I have taught, will teach and/or am currently teaching:</p>
 
+<p>
 <ul>
     {% for course in all_course_list  %}
         <li><a href="{{course.url}}">{{ course.title }}</a></li>
     {% endfor %}
 </ul>
+</p>
+
+<p>If you are interested in possibly doing a research project with me (I am always eager to work with hard working students) then take a look at my <a href='/research'>research</a> pages</p>
 
 {% endblock %}
