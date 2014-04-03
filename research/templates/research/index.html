@@ -59,7 +59,7 @@ My research is in the understanding and design of queueing systems, where indivi
 <p>
     <ul>
     {% for student in openprojects %}
-        <li><a href='./researchstudents/{{student.id}}'>{{student.category}}: {{student.projecttitle}}</a> starting {{student.startdate}}</li>
+        <li><a href='./researchstudents/{{student.id}}'>{{student.category}}: {{student.projecttitle}}</a> (Start: {{student.startdate|date:"M Y"}})</li>
     {% endfor %}
     </ul>
 </p>
@@ -73,7 +73,7 @@ My current/future research students can be found here:
 
 <ol>
 {% for student in currentstudents %}
-    <li><a href='./researchstudents/{{student.id}}'>{{student.studentname}} ({{student.category}}): {{student.projecttitle}}</a> ending {{student.enddate|date:"M Y"}}</li>
+    <li><a href='./researchstudents/{{student.id}}'>{{student.studentname}} ({{student.category}}): {{student.projecttitle}}</a> (Finish: {{student.enddate|date:"M Y"}})</li>
 {% endfor %}
 </ol>
 </p>
