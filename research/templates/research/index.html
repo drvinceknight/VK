@@ -73,7 +73,7 @@ My current/future research students can be found here:
 
 <ol>
 {% for student in currentstudents %}
-    <li><a href='./researchstudents/{{student.id}}'>{{student.studentname}} ({{student.category}}): {{student.projecttitle}}</a></li>
+    <li><a href='./researchstudents/{{student.id}}'>{{student.studentname}} ({{student.category}}): {{student.projecttitle}}</a> ending {{student.enddate|date:"M Y"}}</li>
 {% endfor %}
 </ol>
 </p>

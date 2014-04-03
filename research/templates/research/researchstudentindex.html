@@ -34,7 +34,7 @@ VK: Research students past and present.
 <p>
 <ol>
 {% for student in currentstudents %}
-    <li><a href='./{{student.id}}'>{{student.category}}: {{student.studentname}} - {{student.projecttitle}}</a></li>
+    <li><a href='./{{student.id}}'>{{student.studentname}} ({{student.category}}): {{student.projecttitle}}</a> (Start {{student.startdate|date:"M Y"}})</li>
 {% endfor %}
 </ol>
 </p>
@@ -46,7 +46,7 @@ VK: Research students past and present.
 <p>
 <ol>
 {% for student in paststudents %}
-    <li><a href='./{{student.id}}'>{{student.category}}: {{student.studentname}} - {{student.projecttitle}}</a></li>
+    <li><a href='./{{student.id}}'>{{student.studentname}} ({{student.category}}): {{student.projecttitle}}</a> (Finish {{student.enddate|date:"Y"}})</li>
 {% endfor %}
 </ol>
 </p>
