@@ -76,20 +76,6 @@ Here is the <a href='./readinglist'>reading list</a> for this course (ordered by
 </p>
 {% endif %}
 
-{% if course.readinglistitem_set.all %}
-<h3>Reading list</h3>
-<p>
-Here is the <a href='./readinglist'>reading list</a> for this course (ordered by relevance to course):
-<ol>
-{% for item in course.readinglistitem_set.all %}
-    <li>
-    <a href='{{item.url}}' target='_blank'>{{item.title}}</a> by {{item.author}}
-    </li>
-{% endfor %}
-</ol>
-</p>
-{% endif %}
-
 {% if assessment %}
 <h3>Assessment</h3>
     <p>
