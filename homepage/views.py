@@ -5,7 +5,7 @@ from urlparse import urlparse
 
 from vids.models import Video
 from teaching.models import Course
-from research.models import Paper, Project
+from research.models import Paper, Project, Student
 from outreach.models import BlogPost
 from news.models import Item
 import time
@@ -31,6 +31,8 @@ def index(request):
     current_course_list = [c for c in all_course_list if c.currently_taught()]
     upcoming_course_list = [c for c in all_course_list if c.taught_soon()]
 
+    currentstudents = [student for student in Student.objects.all() if student.current() and student.studentname != '?']
+
     context = {'latest_video_list': latest_video_list,
                'latest_blog_post_list': latest_blog_post_list,
                'all_course_list': all_course_list,
@@ -38,6 +40,7 @@ def index(request):
                'upcoming_course_list': upcoming_course_list,
                'current_project_list': current_project_list,
                'latest_paper_list': latest_paper_list,
+               'currentstudents': currentstudents,
                'news': news,
                }
 

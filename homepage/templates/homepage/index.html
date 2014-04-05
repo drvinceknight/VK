@@ -49,6 +49,14 @@
 
     {% endif %}
 
+    <p>
+    <ul>
+    {% for student in currentstudents %}
+        <li>{{student.studentname}} </li>
+    {% endfor %}
+    </ul>
+    </p>
+
     <p><a href='/research'>My research pages</a> also have details of current/past and potential research projects for undergraduates as well as postgraduates.</p>
 
     <h2><a href="/outreach">Outreach</a></h2>
