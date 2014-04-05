@@ -31,7 +31,7 @@ def index(request):
     current_course_list = [c for c in all_course_list if c.currently_taught()]
     upcoming_course_list = [c for c in all_course_list if c.taught_soon()]
 
-    currentstudents = [student for student in Student.objects.all() if student.current() and student.studentname != '?']
+    currentstudents = [student for student in Student.objects.all() if student.current()]
 
     context = {'latest_video_list': latest_video_list,
                'latest_blog_post_list': latest_blog_post_list,
