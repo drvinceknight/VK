@@ -18,6 +18,16 @@ VK: Outreach
 
 {% block main %}
 
-<p>I am yet to update the content for this from my old site. Take a look <a href="https://sites.google.com/site/vincentknight/home/outreach" target="_blank">here</a>. </p>
+{% if activities %}
+<p>
+    <ul>
+        {% for activity in activities %}
+            <li><a href='./{{activity.slug}}'>{{activity.title}}</a>: {{activity.description}}</li>
+        {% endfor %}
+    </ul>
+</p>
+{% endif %}
+
+<p>I am yet to fully update the content for this from my old site. Take a look <a href="https://sites.google.com/site/vincentknight/home/outreach" target="_blank">here</a>. </p>
 
 {% endblock %}

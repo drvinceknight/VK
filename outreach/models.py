@@ -12,3 +12,10 @@ class BlogPost(models.Model):
 
     def __unicode__(self):
         return u'%s' % self.title
+
+class Activity(models.Model):
+    title = models.CharField(max_length=255, blank=True)
+    description = models.TextField(blank=True)
+    content = models.TextField(blank=True)
+    keywords = models.CharField(max_length=500, blank=True)
+    slug = models.SlugField(blank=True)

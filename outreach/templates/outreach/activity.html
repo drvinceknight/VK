@@ -1,0 +1,27 @@
+{% extends "disqusempty.html" %}
+
+{% block description %}{{activity.description}}{% endblock %}
+
+{% block keywords %}{{activity.keywords}}{% endblock %}
+
+{% block title %}
+VK: {{activity.title}}
+{% endblock %}
+
+{% block menu %}
+			<li><a href="/">Home</a></li>
+			<li><a href="/teaching/">Teaching</a></li>
+			<li><a href="/research">Research</a></li>
+			<li><a class='current' href="/outreach">Outreach</a></li>
+			<li><a href="/coolstuff">Cool Stuff</a></li>
+{% endblock %}
+
+{% block intro %}
+<p>{{activity.title}}</p>
+{% endblock %}
+
+{% block main %}
+{{activity.content|safe}}
+{% endblock %}
+
+{% block disqusid %} "outreach-{{activity.slug}}"; {% endblock %}
