@@ -50,14 +50,15 @@
     {% endif %}
 
     <p>
+    Here is a list of current research students I am working with:
     <ul>
     {% for student in currentstudents %}
-        <li>{{student.studentname}} </li>
+        <li><a href='/research/researchstudents/{{student.id}}'>{{student.studentname}} ({{student.category}}): {{student.projecttitle}}</a> (Finish: {{student.enddate|date:"M Y"}})</li>
     {% endfor %}
     </ul>
     </p>
 
-    <p><a href='/research'>My research pages</a> also have details of current/past and potential research projects for undergraduates as well as postgraduates.</p>
+    <p>For a full list of research students I've worked with as well as any potential open projects that don't have a student yet take a look <a href='/research/researchstudents'>here</a>.</p>
 
     <h2><a href="/outreach">Outreach</a></h2>
     <h3><a href='http://drvinceknight.blogspot.co.uk' target='_blank'>Blog</a></h3>
