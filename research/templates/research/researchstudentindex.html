@@ -5,9 +5,7 @@ Research students past and present.
 {% endblock %}
 
 {% block keywords %}
-    {% for project in current_project_list %}
-        {{ project.title }},{{ project.keywords }},
-    {% endfor %}
+    {{student.keywords}}
 {% endblock %}
 
 {% block title %}
