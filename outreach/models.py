@@ -19,3 +19,6 @@ class Activity(models.Model):
     content = models.TextField(blank=True)
     keywords = models.CharField(max_length=500, blank=True)
     slug = models.SlugField(blank=True)
+
+    def __unicode__(self):
+        return u'%s' % self.title

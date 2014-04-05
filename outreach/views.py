@@ -9,6 +9,7 @@ from research.models import Paper
 from homepage.views import Commit
 from news.views import Item
 from outreach.models import Activity
+from markdown import markdown
 
 def index(request):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
@@ -35,6 +36,7 @@ def index(request):
 
 def activity(request, slug):
     activity = get_object_or_404(Activity, slug=slug)
+    activity.content = markdown(activity.content)
     context = {'activity' : activity}
 
     return render(request, 'outreach/activity.html', context)
