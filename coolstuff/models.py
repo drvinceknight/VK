@@ -20,3 +20,15 @@ class LettersOfRecommendation(models.Model):
     pdf = models.URLField(max_length=500, blank=True)
     def __unicode__(self):
         return "By %s for %s" % (self.author, self.name)
+
+class PC(models.Model):
+    name = models.CharField(max_length=500, blank=True)
+    def __unicode(self):
+        return self.name
+
+class Component(models.Model):
+    PC = models.ForeignKey(PC)
+    title = models.CharField(max_length=500, blank=True)
+    name = models.CharField(max_length=500, blank=True)
+    description = models.TextField(blank=True)
+    keywords = models.CharField(max_length=500, blank=True)
