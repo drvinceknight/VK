@@ -36,6 +36,19 @@ VK: Cool Stuff
 
 <p>A list of letters of recommendation can be found <a href='./lettersofrecommendation'>here</a>. This is meant to be useful as templates for letters of recommendation but also could be of interest for my students.</p>
 
+<h3>Custom built computer</h3>
+
+<p>I've recently gotten in to building a custom pc</a>
+
+<p>Here is a link to the various components in my current build:
+
+<ul>
+{% for pc in pcs %}
+<li><a href="./pcs/{{pc.name}}">{{pc.name}}</a></li>
+{% endfor %}
+</ul>
+</p>
+
 <h3>Random plot</h3>
 
 <p>Here is a random plot that is generated using something similar to <a href="http://wiki.scipy.org/Cookbook/Matplotlib/Django" target="_blank">this</a>. Refresh this page to get a new plot.</p>

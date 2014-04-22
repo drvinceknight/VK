@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     url(r'^usefullinks.html$', views.usefullinks),
     url(r'^lettersofrecommendation$', views.lettersofrecommendation),
     url(r'^lettersofrecommendation/(?P<letter_id>\d+)/$', views.letter, name='letter'),
+    url(r'^pcs/(?P<name>[\w\-]+)/$', views.pc),
     url(r'^error$', views.error),
     )

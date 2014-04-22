@@ -7,6 +7,7 @@ from news.models import Item
 
 from coolstuff.models import UsefullLink
 from coolstuff.models import LettersOfRecommendation
+from coolstuff.models import PC
 import time
 
 from random import sample
@@ -17,9 +18,11 @@ def index(request):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
     numberoflinks = 5
     link_selection = sample(UsefullLink.objects.all(), numberoflinks)
+    pcs = PC.objects.all()
 
     context = {'link_selection': link_selection,
-               'news': news}
+               'news': news,
+               'pcs': pcs}
 
     return render_to_response('coolstuff/index.html', context)
 
@@ -43,6 +46,17 @@ def lettersofrecommendation(request):
                'news': news }
 
     return render_to_response('coolstuff/lettersofrecommendation.html', context)
+
+
+def pc(request, name):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
+    pc = get_object_or_404(PC, name=name)
+
+    context = {'pc': pc,
+               'news': news }
+
+    return render_to_response('coolstuff/pc.html', context)
+
 
 def letter(request, letter_id):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
