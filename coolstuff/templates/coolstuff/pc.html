@@ -1,11 +1,19 @@
-{% extends "coolstuff/index.html" %}
+{% extends "disqusbase.html" %}
 
 {% block description %} A page describing the components of my self build {{pc.name}} {% endblock %}
 
-{% block keywords %} Selfbuild {% endblock %}
+{% block keywords %} Self build, PC components {% endblock %}
 
 {% block title %}
 VK: PC - {{pc.name}}
+{% endblock %}
+
+{% block menu %}
+			<li><a href="/">Home</a></li>
+			<li><a href="/teaching/">Teaching</a></li>
+			<li><a href="/research">Research</a></li>
+			<li><a href="/outreach">Outreach</a></li>
+			<li><a class="current" href="/coolstuff">Cool Stuff</a></li>
 {% endblock %}
 
 {% block intro %}
@@ -14,12 +22,8 @@ VK: PC - {{pc.name}}
 
 {% block main %}
 
-{% for component in pc.components %}
-
-<h3>{{component.title - component.name}}</h3>
-
-{{component.description|safe}}
-
-{% endfor %}
+{{description|safe}}
 
 {% endblock %}
+
+{% block disqusid %} "pcs-{{pc.name}}"; {% endblock %}

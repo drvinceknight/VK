@@ -7,8 +7,9 @@ from news.models import Item
 
 from coolstuff.models import UsefullLink
 from coolstuff.models import LettersOfRecommendation
-from coolstuff.models import PC
+from coolstuff.models import PC, Component
 import time
+import markdown
 
 from random import sample
 
@@ -51,8 +52,13 @@ def lettersofrecommendation(request):
 def pc(request, name):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
     pc = get_object_or_404(PC, name=name)
+    description = ''
+    for component in Component.objects.filter(PC = pc):
+        description += '<h3>%s: %s</h3>' % (component.title, component.name)
+        description += markdown.markdown(component.description)
 
     context = {'pc': pc,
+               'description': description,
                'news': news }
 
     return render_to_response('coolstuff/pc.html', context)
