@@ -1,0 +1,25 @@
+{% extends "coolstuff/index.html" %}
+
+{% block description %} A page describing the components of my self build {{pc.name}} {% endblock %}
+
+{% block keywords %} Selfbuild {% endblock %}
+
+{% block title %}
+VK: PC - {{pc.name}}
+{% endblock %}
+
+{% block intro %}
+<p>The components for my self build called {{pc.name}}</p>
+{% endblock %}
+
+{% block main %}
+
+{% for component in pc.components %}
+
+<h3>{{component.title - component.name}}</h3>
+
+{{component.description|safe}}
+
+{% endfor %}
+
+{% endblock %}
