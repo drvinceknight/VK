@@ -23,7 +23,7 @@ class LettersOfRecommendation(models.Model):
 
 class PC(models.Model):
     name = models.CharField(max_length=500, blank=True)
-    def __unicode(self):
+    def __unicode__(self):
         return self.name
 
 class Component(models.Model):
