@@ -8,6 +8,7 @@ from news.models import Item
 from coolstuff.models import UsefullLink
 from coolstuff.models import LettersOfRecommendation
 from coolstuff.models import PC, Component
+from coolstuff.models import MediaAppearance
 import time
 import markdown
 
@@ -20,10 +21,13 @@ def index(request):
     numberoflinks = 5
     link_selection = sample(UsefullLink.objects.all(), numberoflinks)
     pcs = PC.objects.all()
+    numberofmedia = 5
+    media = MediaAppearance.objects.all()[:numberofmedia]
 
     context = {'link_selection': link_selection,
                'news': news,
-               'pcs': pcs}
+               'pcs': pcs,
+               'media': media}
 
     return render_to_response('coolstuff/index.html', context)
 

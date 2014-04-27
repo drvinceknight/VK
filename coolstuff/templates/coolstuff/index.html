@@ -32,9 +32,25 @@ VK: Cool Stuff
 
 <p><strong>For a full list please click <a href="./usefullinks.html">here</a></strong>.</p>
 
-<h3>Letters of recommendation</h3>
+{% if media %}
+<h3>Media Appearances</h3>
 
-<p>A list of letters of recommendation can be found <a href='./lettersofrecommendation'>here</a>. This is meant to be useful as templates for letters of recommendation but also could be of interest for my students.</p>
+<p>Here are the latest times my work and/or I have appeared in the media:</p>
+
+<p>
+<ul>
+{% for appearance in media %}
+    <li>{{appearance.date|date:'Y-m-d' }}: <a href="./media/{{appearance.id}}">{{appearance.name}}</a></li>
+{% endfor %}
+</ul>
+</p>
+
+{% endif %}
+
+<h3>Jog2Nog</h3>
+
+<p><a href='http://jog2nog.blogspot.co.uk/' target='_blank'>Here is the story of how my wife and I got engaged.</a></p>
+<p><a href='https://plus.google.com/s/jog2nog' target='_blank'>Here</a> are the G+ posts we wrote as we were going.</p>
 
 <h3>Custom built computer</h3>
 
@@ -47,10 +63,9 @@ VK: Cool Stuff
 </ul>
 </p>
 
-<h3>Jog2Nog</h3>
+<h3>Letters of recommendation</h3>
 
-<p><a href='http://jog2nog.blogspot.co.uk/' target='_blank'>Here is the story of how my wife and I got engaged.</a></p>
-<p><a href='https://plus.google.com/s/jog2nog' target='_blank'>Here</a> are the G+ posts we wrote as we were going.</p>
+<p>A list of letters of recommendation can be found <a href='./lettersofrecommendation'>here</a>. This is meant to be useful as templates for letters of recommendation but also could be of interest for my students.</p>
 
 <h3>Random plot</h3>
 
