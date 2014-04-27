@@ -1,0 +1,32 @@
+{% extends "disqusbase.html" %}
+
+{% block description %} A page describing my media appearances. {% endblock %}
+
+
+{% block title %}
+VK: Media
+{% endblock %}
+
+{% block menu %}
+			<li><a href="/">Home</a></li>
+			<li><a href="/teaching/">Teaching</a></li>
+			<li><a href="/research">Research</a></li>
+			<li><a href="/outreach">Outreach</a></li>
+			<li><a class="current" href="/coolstuff">Cool Stuff</a></li>
+{% endblock %}
+
+{% block intro %}
+<p>My appearances in the media.</p>
+{% endblock %}
+
+{% block main %}
+
+<ol reversed>
+{% for appearance in media %}
+    <li>{{appearance.date|date:'Y-m-d' }}: <a href="./{{appearance.id}}">{{appearance.name}}</a></li>
+{% endfor %}
+</ol>
+
+{% endblock %}
+
+{% block disqusid %} "media-index"; {% endblock %}

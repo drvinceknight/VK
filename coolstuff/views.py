@@ -31,6 +31,15 @@ def index(request):
 
     return render_to_response('coolstuff/index.html', context)
 
+def mediaindex(request):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
+    media = MediaAppearance.objects.all()
+
+    context = { 'news': news,
+               'media': media}
+
+    return render_to_response('coolstuff/mediaindex.html', context)
+
 def usefullinks(request):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
     links = UsefullLink.objects.all().order_by("title")

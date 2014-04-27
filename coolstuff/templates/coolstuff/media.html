@@ -1,0 +1,29 @@
+{% extends "disqusbase.html" %}
+
+{% block description %} A page describing a media appearance called {{media.name}} {% endblock %}
+
+{% block keywords %} {{media.name}} {% endblock %}
+
+{% block title %}
+VK: {{media.name}}
+{% endblock %}
+
+{% block menu %}
+			<li><a href="/">Home</a></li>
+			<li><a href="/teaching/">Teaching</a></li>
+			<li><a href="/research">Research</a></li>
+			<li><a href="/outreach">Outreach</a></li>
+			<li><a class="current" href="/coolstuff">Cool Stuff</a></li>
+{% endblock %}
+
+{% block intro %}
+<p><a href='{{media.url}}' target='_blank'>{{media.name}}</a></p>
+{% endblock %}
+
+{% block main %}
+
+{{description|safe}}
+
+{% endblock %}
+
+{% block disqusid %} "media-{{media.id}}"; {% endblock %}
