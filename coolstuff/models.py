@@ -32,3 +32,13 @@ class Component(models.Model):
     name = models.CharField(max_length=500, blank=True)
     description = models.TextField(blank=True)
     keywords = models.CharField(max_length=500, blank=True)
+
+class MediaAppearance(models.Model):
+    name = models.CharField(max_length=500, blank=True)
+    date = models.DateTimeField(blank=True)
+    url = models.URLField(max_length=500, blank=True)
+    description = models.TextField(blank=True)
+    def __unicode__(self):
+        return "%s - %s" % (self.date, self.name)
+    class Meta:
+        ordering = ['-date']
