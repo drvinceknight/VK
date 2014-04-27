@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^lettersofrecommendation/(?P<letter_id>\d+)/$', views.letter, name='letter'),
     url(r'^pcs/(?P<name>[\w\-]+)/$', views.pc),
     url(r'^error$', views.error),
+    url(r'^media/(?P<media_id>\d+)/$', views.media, name='media'),
     )

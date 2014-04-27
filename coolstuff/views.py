@@ -67,6 +67,16 @@ def pc(request, name):
 
     return render_to_response('coolstuff/pc.html', context)
 
+def media(request, media_id):
+    news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
+    media = get_object_or_404(MediaAppearance, pk=media_id)
+
+    description = markdown.markdown(media.description)
+    context = {'media': media,
+               'description': description,
+               'news': news }
+
+    return render_to_response('coolstuff/media.html', context)
 
 def letter(request, letter_id):
     news = Item.objects.filter(published=True).order_by('-pub_date')[:5]
