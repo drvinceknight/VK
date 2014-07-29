@@ -63,7 +63,7 @@
     <h2><a href="/outreach">Outreach</a></h2>
     <h3><a href='http://drvinceknight.blogspot.co.uk' target='_blank'>Blog</a></h3>
     {% if latest_blog_post_list %}
-        <p>Here is my latest blog post at <a href='http://drvinceknight.blogspot.co.uk' target='_blank'>Un peu de math</a>:</p>
+        <p>Here is my latest blog post at <a href='http://drvinceknight.github.io/unpeudemath/' target='_blank'>Un peu de math</a>:</p>
         <p><strong><a href='{{ latest_blog_post_list.0.url }}' target='_blank'>{{latest_blog_post_list.0.title}}</a>:</strong> {{latest_blog_post_list.0.description}}</p>
         <p>Here are my previous {{latest_blog_post_list|length|add:"-1"}} posts:
         <ul>
